@@ -4,11 +4,13 @@ import os, sys, subprocess, string, re
 
 trigger_menus = {
  # To get the trigger menu history in a given run range, run
- # ./getHLTkey.py --firstRun=170249 --lastRun=173692 --perKey
+ # ./getHLTkey.py --firstRun=160404 --lastRun=180252 --perKey
  # For more info, see https://twiki.cern.ch/twiki/bin/view/CMS/HLTriggerTools and
  #                    http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/UserCode/Leptoquarks/CommonToolsV2/test/TriggerInfo/README
  
- ## /Jet/Run2011A-May10ReReco-v1/AOD
+ ## Run2011A-May10ReReco-v1
+ '/cdaq/physics/Run2011/5e32/v4.2/HLT/V2':     [160404,160405,160406],
+ '/cdaq/physics/Run2011/5e32/v4.2/HLT/V5':     [160410,160413], 
  '/cdaq/physics/Run2011/5e32/v4.2/HLT/V6':     [160431,160432,160433,160442,160443,160444,160445,160446,160447,160449,160450,160454,160455,160456,160462,160463,160466,160467],
  '/cdaq/physics/Run2011/5e32/v4.2/HLT/V7':     [160497,160498,160499,160577,160578,160579],
  '/cdaq/physics/Run2011/5e32/v4.2/HLT/V8':     [160808,160815],
@@ -36,7 +38,7 @@ trigger_menus = {
  '/cdaq/physics/Run2011/5e32/v8.3/HLT/V3':     [163754],
  '/cdaq/physics/Run2011/5e32/v8.3/HLT/V4':     [163757,163758,163759,163760,163761,163763,163765,163795,163796,163817,163869],
 
- ## /Jet/Run2011A-PromptReco-v4/AOD
+ ## Run2011A-PromptReco-v4
  '/cdaq/physics/Run2011/1e33/v1.3/HLT/V2':     [165088,165098,165099,165102,165103,165120,165121],
  '/cdaq/physics/Run2011/1e33/v1.3/HLT/V6':     [165205],
  '/cdaq/physics/Run2011/1e33/v1.3/HLT/V7':     [165208],
@@ -54,7 +56,7 @@ trigger_menus = {
  '/cdaq/physics/Run2011/1.4e33/v1.2/HLT/V1':   [167078,167098,167102,167103,167151,167281,167282,167284],
  '/cdaq/physics/Run2011/1.4e33/v1.2/HLT/V3':   [167551,167673,167674,167675,167676,167740,167746,167754,167784,167786,167807,167830,167898,167913],
 
- ## /Jet/Run2011A-05Aug2011-v1/AOD and /Jet/Run2011A-PromptReco-v6/AOD
+ ## Run2011A-05Aug2011-v1 and Run2011A-PromptReco-v6
  '/cdaq/physics/Run2011/2e33/v1.1/HLT/V1':     [170249,170255,170286,170292,170298,170303,170304,170307,170348,170354,170376,170378,170380,170382,170397,170406],
  '/cdaq/physics/Run2011/2e33/v1.1/HLT/V2':     [170452,170527,170722,170759],
  '/cdaq/physics/Run2011/2e33/v1.2/HLT/V1':     [170826,170842,170854,170876,170896,170899,170901,171050,171091,171098,171102,171106,171116,171117,171156,171178],
@@ -66,7 +68,7 @@ trigger_menus = {
  '/cdaq/physics/Run2011/3e33/v1.1/HLT/V4':     [173380,173381,173389,173406,173430,173431,173438,173439],
  '/cdaq/physics/Run2011/3e33/v1.2/HLT/V1':     [173657,173658,173659,173660,173661,173662,173663,173664,173692],
 
- ## /Jet/Run2011B-PromptReco-v1/AOD
+ ## Run2011B-PromptReco-v1
  '/cdaq/physics/Run2011/3e33/v2.0/HLT/V4':     [175832,175833,175834,175835,175837],
  '/cdaq/physics/Run2011/3e33/v2.0/HLT/V7':     [175857,175858,175860,175863,175865,175866,175877,175881,175886,175887,175888,175906,175910,175921],
  '/cdaq/physics/Run2011/3e33/v2.1/HLT/V1':     [175971,175973,175974,175975,175976,175990,176023],
@@ -82,7 +84,9 @@ trigger_menus = {
  '/cdaq/physics/Run2011/3e33/v5.0/HLT/V1':     [178078,178098,178099,178100,178101,178102,178110,178116,178151,178160,178162],
  '/cdaq/physics/Run2011/5e33/v1.4/HLT/V3':     [178420,178421,178424,178479],
  '/cdaq/physics/Run2011/5e33/v1.4/HLT/V4':     [178667,178675,178677,178703,178708],
- '/cdaq/physics/Run2011/5e33/v1.4/HLT/V5':     [178712,178724,178731,178738,178786,178803,178840,178854,178866,178871,178920,178970,178985],
+ '/cdaq/physics/Run2011/5e33/v1.4/HLT/V5':     [178712,178724,178731,178738,178786,178803,178840,178854,178866,178871,178920,178970,178985,179411,179431,179434,179452,179476,179497,179547,179558,179563,179889],
+ '/cdaq/physics/Run2011/5e33/v2.2/HLT/V2':     [179959,179977,180072,180076,180093],
+ '/cdaq/physics/Run2011/5e33/v2.2/HLT/V4':     [180241,180249,180250,180252]
 }
 
 #dataset = 'Jet'
