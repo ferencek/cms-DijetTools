@@ -95,13 +95,13 @@ Double_t getNumber(const string& fNumber, const Int_t fBin, const string& fBTagg
 
   string histoName = (fNumber.find("n")!=string::npos ? "DATA__h2_" : "QCD_Pythia6__h2_") + fNumber + "_" + muString + "_" + etaString;
   
-  TH2D *h2 = (TH2D*)file->Get(histoName1.c_str());
+  TH2D *h2 = (TH2D*)file->Get(histoName.c_str());
 
   Int_t binsX[] = {944, 1000, 1200, 1800, 2500, 6000};
 //   Int_t binsX[] = {944, 980, 1500, 2000, 2500, 6000};
   Int_t binsY[] = {0,6,9,41};
   
-  Double_t Integral = h2_1->Integral(binsX[massBin-1]+1,binsX[massBin],binsY[pvBin-1]+1,binsY[pvBin]);
+  Double_t Integral = h2->Integral(binsX[massBin-1]+1,binsX[massBin],binsY[pvBin-1]+1,binsY[pvBin]);
 
   return Integral;
 }
