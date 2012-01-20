@@ -41,8 +41,8 @@ double MCnLtotal=0.;
 
 void INIT(void)
 {
-  file_tchpt=new TFile("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root");
-  file_ssvhpt=new TFile("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root");
+  file_tchpt=new TFile("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
+  file_ssvhpt=new TFile("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
   return;
 }
 
@@ -125,8 +125,8 @@ void INIT_HFFraction(const string& fBTagger)
           double N210=getNumber("N210", fBin, fBTagger);
           double N220=getNumber("N220", fBin, fBTagger);
 
-          MCnHtotal+=(N000+N001+N002);
-          MCnLtotal+=(N100+N101+N110+N111+N200+N210+N220);
+          MCnLtotal+=(N000+N001+N002);
+          MCnHtotal+=(N100+N101+N110+N111+N200+N210+N220);
 
         }
       }
@@ -225,7 +225,7 @@ void minimize(void)
   INIT();
   INIT_HFFraction("SSVHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
   
-  if(DEBUG) cout << "MCnH/MCnL=" << (MCnHtotal/MCnLtotal) << endl;
+  cout << "HF fraction=" << (MCnHtotal/(MCnLtotal+MCnHtotal)) << endl;
   
   // make some parameter choices
   //  muSF=0.9; // muon SF
