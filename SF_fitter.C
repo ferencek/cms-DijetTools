@@ -10,10 +10,10 @@
     2: 1.2=<|eta|<=2.5
 
   C: dijet mass bin
-    1: 944<=mass<980 GeV
-    2: 980<=mass<1500 GeV
-    3: 1500<=mass<2000 GeV
-    4: 2000<=mass<2500 GeV
+    1: 944<=mass<1000 GeV
+    2: 1000<=mass<1200 GeV
+    3: 1200<=mass<1800 GeV
+    4: 1800<=mass<2500 GeV
     5: 2500<=mass<6000 GeV
     
   D: primary vertex bin
@@ -160,14 +160,14 @@ double nll(const string& fBTagger, double SFh, double SFl, double K, double muSF
 	  double N210=getNumber("N210", fBin, fBTagger);
 	  double N220=getNumber("N220", fBin, fBTagger);
 
-          double L=1+(1-K)*(MCnHtotal/MCnLtotal);
+          double r=1+(1-K)*(MCnHtotal/MCnLtotal);
 
-	  double MCn0=K*N220*(1-SFh)*(1-SFh)+K*N111*(1-SFh)*(1-SFl)+L*N002*(1-SFl)*(1-SFl)+
-			    K*(N210+N110)*(1-SFh)+K*N101*(1-SFl)+L*N001*(1-SFl)+
-			    K*(N200+N100)+L*N000;
-	  double MCn1=K*N220*2*SFh*(1-SFh)+K*N111*(SFh*(1-SFl)+(1-SFh)*SFl)+L*N002*2*SFl*(1-SFl)+
-			    K*(N210+N110)*SFh+K*N101*SFl+L*N001*SFl;
-	  double MCn2=K*N220*SFh*SFh+K*N111*SFh*SFl+L*N002*SFl*SFl;
+	  double MCn0=K*N220*(1-SFh)*(1-SFh)+K*N111*(1-SFh)*(1-SFl)+r*N002*(1-SFl)*(1-SFl)+
+			    K*(N210+N110)*(1-SFh)+K*N101*(1-SFl)+r*N001*(1-SFl)+
+			    K*(N200+N100)+r*N000;
+	  double MCn1=K*N220*2*SFh*(1-SFh)+K*N111*(SFh*(1-SFl)+(1-SFh)*SFl)+r*N002*2*SFl*(1-SFl)+
+			    K*(N210+N110)*SFh+K*N101*SFl+r*N001*SFl;
+	  double MCn2=K*N220*SFh*SFh+K*N111*SFh*SFl+r*N002*SFl*SFl;
 
 	  if(muBin==2) { MCn0*=muSF; MCn1*=muSF; MCn2*=muSF; }
 
