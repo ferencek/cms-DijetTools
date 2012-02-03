@@ -224,7 +224,8 @@ void minimize(void)
 {
   INIT();
   INIT_HFFraction("SSVHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
-  
+
+  cout << "MCnTotal=" << (MCnLtotal+MCnHtotal) << endl;
   cout << "HF fraction=" << (MCnHtotal/(MCnLtotal+MCnHtotal)) << endl;
   
   // make some parameter choices

@@ -259,7 +259,8 @@ void minimize(void)
 {
   INIT();
   INIT_HFFraction("SSVHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
-  
+
+  cout << "MCnTotal=" << (MCn_GSP+MCn_noGSP) << endl;
   cout << "GSP HF fraction=" << (MCn_GSP/(MCn_GSP+MCn_noGSP)) << endl;
   
   // make some parameter choices
@@ -283,7 +284,7 @@ void minimize(void)
   if(whichTagger==1) { t.FixParameter(2); t.FixParameter(3); }
   if(whichTagger==2) { t.FixParameter(0); t.FixParameter(1); }
   if(fixMuSF) t.FixParameter(5);
-  
+
   t.Migrad();
 //   t.mnmnos();
 }
