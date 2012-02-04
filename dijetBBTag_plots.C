@@ -337,10 +337,10 @@ void makePlots()
 
   
   // Primary vertex plots
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________nGoodVertices_pretag",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________nGoodVertices_pretag",
-                  "nGoodVertices_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Good Vertex Multiplicity", "Events", -0.5, 22.5);
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________nGoodVertices_pretag",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________nGoodVertices_pretag",
+//                   "nGoodVertices_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Good Vertex Multiplicity", "Events", -0.5, 22.5);
 
 //   data_MC_ratio("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
 //                 "DATA__cutHisto_allPreviousCuts________nGoodVertices_pretag",
@@ -361,135 +361,135 @@ void makePlots()
 //                   "absDeltaPhiJ1J2_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "|#Delta#phi(j_{1},j_{2})|", "Events", 0, 3.15, "Logy");
 
   
-  // Pt plots
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ1_pretag",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1_pretag",
-                   "PtJ1_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
-
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ2_pretag",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2_pretag",
-                   "PtJ2_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
-  // SSVHPT SingleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ1",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1",
-                   "PtJ1_SSVHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT SingleTag", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
-
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ2",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2",
-                   "PtJ2_SSVHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT SingleTag", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
-  // SSVHPT DoubleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ1",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1",
-                   "PtJ1_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT DoubleTag", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
-
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________PtJ2",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2",
-                   "PtJ2_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT DoubleTag", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
-
-  
-  // Dijet mass plots
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
-                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
-                    "DijetMass_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
-                  "DijetMass_ratio_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // SSVHPT SingleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass",
-                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_SSVHPT_SingleTag_PUReweighted_Full2011.png", "SSVHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 30000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_SSVHPT_SingleTag_PUReweighted_Full2011.png", "SSVHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // SSVHPT DoubleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass",
-                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "SSVHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 300);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "SSVHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // TCHPT SingleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass",
-                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 50000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // TCHPT DoubleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass",
-                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass",
-                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-
-  
-  // Muon multiplicity plots
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________nMuons_pretag",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons_pretag",
-                   "nMuons_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
-    
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                    "DATA__h1_nMuons_vs_DijetMass_pretag",
-                    "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
-                    "nMuons_vs_DijetMass_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 20000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__h1_nMuons_vs_DijetMass_pretag",
-                  "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
-                  "nMuons_vs_DijetMass_ratio_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // TCHPT SingleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________nMuons",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-                   "nMuons_TCHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT SingleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
-    
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                    "DATA__h1_nMuons_vs_DijetMass",
-                    "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                    "nMuons_vs_DijetMass_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 3000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
-                  "DATA__h1_nMuons_vs_DijetMass",
-                  "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                  "nMuons_vs_DijetMass_ratio_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // TCHPT DoubleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________nMuons",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-                   "nMuons_TCHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT DoubleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
-    
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                    "DATA__h1_nMuons_vs_DijetMass",
-                    "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                    "nMuons_vs_DijetMass_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 200);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
-                  "DATA__h1_nMuons_vs_DijetMass",
-                  "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                  "nMuons_vs_DijetMass_ratio_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // Pt plots
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ1_pretag",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1_pretag",
+//                    "PtJ1_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
+// 
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ2_pretag",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2_pretag",
+//                    "PtJ2_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
+//   // SSVHPT SingleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ1",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1",
+//                    "PtJ1_SSVHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT SingleTag", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
+// 
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ2",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2",
+//                    "PtJ2_SSVHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT SingleTag", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
+//   // SSVHPT DoubleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ1",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ1",
+//                    "PtJ1_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT DoubleTag", "p_{T,1}", "Events", 0, 2200, "Logy", 20);
+// 
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________PtJ2",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________PtJ2",
+//                    "PtJ2_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, SSVHPT DoubleTag", "p_{T,2}", "Events", 0, 2200, "Logy", 20);
+// 
+//   
+//   // Dijet mass plots
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                     "DijetMass_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                   "DijetMass_ratio_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // SSVHPT SingleTag
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                     "DijetMass_SSVHPT_SingleTag_PUReweighted_Full2011.png", "SSVHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 30000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                   "DijetMass_ratio_SSVHPT_SingleTag_PUReweighted_Full2011.png", "SSVHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // SSVHPT DoubleTag
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                     "DijetMass_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "SSVHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 300);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                   "DijetMass_ratio_SSVHPT_DoubleTag_PUReweighted_Full2011.png", "SSVHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // TCHPT SingleTag
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                     "DijetMass_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 50000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                   "DijetMass_ratio_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // TCHPT DoubleTag
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                     "DijetMass_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass",
+//                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+//                   "DijetMass_ratio_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+// 
+//   
+//   // Muon multiplicity plots
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons_pretag",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons_pretag",
+//                    "nMuons_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//     
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass_pretag",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
+//                     "nMuons_vs_DijetMass_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 20000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass_pretag",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
+//                   "nMuons_vs_DijetMass_ratio_PUReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // TCHPT SingleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
+//                    "nMuons_TCHPT_SingleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT SingleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//     
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                     "nMuons_vs_DijetMass_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 3000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_EventBins/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                   "nMuons_vs_DijetMass_ratio_TCHPT_SingleTag_PUReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   // TCHPT DoubleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
+//                    "nMuons_TCHPT_DoubleTag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT DoubleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//     
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                     "nMuons_vs_DijetMass_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 200);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUReweighted/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                   "nMuons_vs_DijetMass_ratio_TCHPT_DoubleTag_PUReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
 
   // # JES Up
 
@@ -679,76 +679,96 @@ void makePlots()
 
   //#### MadGraph
 
-  // DATA/MC scale factor
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins_MadGraph/Final__histograms.root",
-                  "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
-                  "QCD_MadGraph__cutHisto_allPreviousCuts________DijetMass_pretag",
-                  "data_MC_scale_factor_PUReweighted_MadGraph_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-
-
-  // Dijet mass plots
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins_MadGraph/Final__histograms.root",
-                    "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
-                    "QCD_MadGraph__cutHisto_allPreviousCuts________DijetMass_pretag",
-                    "DijetMass_PUReweighted_MadGraph_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500000);
+//   // DATA/MC scale factor
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins_MadGraph/Final__histograms.root",
+//                   "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                   "QCD_MadGraph__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                   "data_MC_scale_factor_PUReweighted_MadGraph_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+// 
+// 
+//   // Dijet mass plots
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_EventBins_MadGraph/Final__histograms.root",
+//                     "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                     "QCD_MadGraph__cutHisto_allPreviousCuts________DijetMass_pretag",
+//                     "DijetMass_PUReweighted_MadGraph_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500000);
   
 
 //###################################################################################################################
 //## PU and b-tag SF reweighting applied
 //###################################################################################################################
-  
-  // TCHPT SingleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
+
+  // Dijet mass plots
+  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
+                    "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
+                    "DijetMass_PUReweighted_bPartonMatching_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500000);
+
+  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
+                  "DATA__cutHisto_allPreviousCuts________DijetMass_pretag",
+                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass_pretag",
+                  "DijetMass_ratio_PUReweighted_bPartonMatching_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+  // TCHPT ZeroTag
+  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_ZeroTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
                     "DATA__cutHisto_allPreviousCuts________DijetMass",
                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 50000);
+                    "DijetMass_TCHPT_ZeroTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT ZeroTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 5e5);
 
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
+  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_ZeroTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass",
                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-  // TCHPT DoubleTag
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
+                  "DijetMass_ratio_TCHPT_ZeroTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT ZeroTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+  // TCHPT SingleTag
+  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
                     "DATA__cutHisto_allPreviousCuts________DijetMass",
                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 500);
+                    "DijetMass_TCHPT_SingleTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 50000);
 
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
+  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass",
                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
-
-
-  // Muon multiplicity plots
-  // TCHPT SingleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________nMuons",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-                   "nMuons_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT SingleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
-    
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
-                    "DATA__h1_nMuons_vs_DijetMass",
-                    "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                    "nMuons_vs_DijetMass_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 3000);
-
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
-                  "DATA__h1_nMuons_vs_DijetMass",
-                  "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                  "nMuons_vs_DijetMass_ratio_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+                  "DijetMass_ratio_TCHPT_SingleTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
   // TCHPT DoubleTag
-  overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
-                   "DATA__cutHisto_allPreviousCuts________nMuons",
-                   "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-                   "nMuons_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT DoubleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
-    
-  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
-                    "DATA__h1_nMuons_vs_DijetMass",
-                    "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                    "nMuons_vs_DijetMass_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 200);
+  overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
+                    "DATA__cutHisto_allPreviousCuts________DijetMass",
+                    "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+                    "DijetMass_TCHPT_DoubleTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Events", 944, 6000, 0.01, 50000);
 
-  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
-                  "DATA__h1_nMuons_vs_DijetMass",
-                  "QCD_Pythia6__h1_nMuons_vs_DijetMass",
-                  "nMuons_vs_DijetMass_ratio_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+  data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted_bPartonMatching/Final__histograms.root",
+                  "DATA__cutHisto_allPreviousCuts________DijetMass",
+                  "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
+                  "DijetMass_ratio_TCHPT_DoubleTag_PUSFReweighted_bPartonMatching_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+
+
+//   // Muon multiplicity plots
+//   // TCHPT SingleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
+//                    "nMuons_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT SingleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//     
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                     "nMuons_vs_DijetMass_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 3000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUSFReweighted/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                   "nMuons_vs_DijetMass_ratio_TCHPT_SingleTag_PUSFReweighted_Full2011.png", "TCHPT SingleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
+//   TCHPT DoubleTag
+//   overlay_DATA_MC("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
+//                    "nMuons_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHPT DoubleTag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//     
+//   overlay_DATA_MC_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                     "nMuons_vs_DijetMass_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 200);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_DijetBBTag_TCHPT_DoubleTag_PUSFReweighted/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass",
+//                   "nMuons_vs_DijetMass_ratio_TCHPT_DoubleTag_PUSFReweighted_Full2011.png", "TCHPT DoubleTag", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
   
 }
