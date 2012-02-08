@@ -230,31 +230,31 @@ void makePlots()
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
 //                           "M=500 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 1530,
-//                           "ResonanceShape_M-500_VarBins.png");
+//                           "ResonanceShape_RSG_M-500_VarBins.png");
 //   
 //   ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes/RSGravitonToJJ_M-700_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
 //                           "M=700 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 1856,
-//                           "ResonanceShape_M-700_VarBins.png");
+//                           "ResonanceShape_RSG_M-700_VarBins.png");
 //   
 //   ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
 //                           "M=1200 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 2775,
-//                           "ResonanceShape_M-1200_VarBins.png");
+//                           "ResonanceShape_RSG_M-1200_VarBins.png");
 // 
 //   ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
 //                           "M=2000 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 4509,
-//                           "ResonanceShape_M-2000_VarBins.png");
+//                           "ResonanceShape_RSG_M-2000_VarBins.png");
 // 
 //   ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
 //                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
 //                           "M=3500 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 5663,
-//                           "ResonanceShape_M-3500_VarBins.png");
+//                           "ResonanceShape_RSG_M-3500_VarBins.png");
 
   // ##########################################
   // ## With variable dijet mass binning
@@ -265,5 +265,5 @@ void makePlots()
                           "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
                           3429., 143.9, 3383., 171.5,
                           "M=3500 GeV", "#splitline{RSG#rightarrowq#bar{q}}{reshaped}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 5663,
-                          "ResonanceShape_M-3500_reshaped_VarBins.png");
+                          "ResonanceShape_RSG_M-3500_reshaped_VarBins.png");
 }
