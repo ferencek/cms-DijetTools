@@ -41,8 +41,8 @@ double MCn_noGSP=0.;
 
 void INIT(void)
 {
-  file_tchpt=new TFile("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_bPartonMatching_GSP_EventBins/Final__histograms.root");
-  file_ssvhpt=new TFile("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_bPartonMatching_GSP_EventBins/Final__histograms.root");
+  file_tchpt=new TFile("CRAB_Jobs_MainAnalysis_TCHPT_1Tag_PUReweighted_bPartonMatching_GSP_EventBins/Final__histograms.root");
+  file_ssvhpt=new TFile("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUReweighted_bPartonMatching_GSP_EventBins/Final__histograms.root");
   return;
 }
 

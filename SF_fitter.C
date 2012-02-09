@@ -41,8 +41,8 @@ double MCnLtotal=0.;
 
 void INIT(void)
 {
-  file_tchpt=new TFile("CRAB_Jobs_DijetBBTag_TCHPT_SingleTag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
-  file_ssvhpt=new TFile("CRAB_Jobs_DijetBBTag_SSVHPT_SingleTag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
+  file_tchpt=new TFile("CRAB_Jobs_MainAnalysis_TCHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
+  file_ssvhpt=new TFile("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
   return;
 }
 
@@ -223,7 +223,7 @@ void fcn_SSVOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 void minimize(void)
 {
   INIT();
-  INIT_HFFraction("SSVHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
+  INIT_HFFraction("TCHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
 
   cout << "MCnTotal=" << (MCnLtotal+MCnHtotal) << endl;
   cout << "HF fraction=" << (MCnHtotal/(MCnLtotal+MCnHtotal)) << endl;
@@ -249,7 +249,7 @@ void minimize(void)
   if(whichTagger==1) { t.FixParameter(2); t.FixParameter(3); }
   if(whichTagger==2) { t.FixParameter(0); t.FixParameter(1); }
   if(fixMuSF) t.FixParameter(5);
-  
+
   t.Migrad();
 //   t.mnmnos();
 }
