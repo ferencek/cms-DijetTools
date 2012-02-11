@@ -527,7 +527,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons_pretag",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons_pretag",
-//                    "nMuons_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_PUReweighted_Full2011.png", "M_{jj}>944 GeV", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass_pretag",
@@ -542,7 +542,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_0Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 0Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_0Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 0Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
@@ -557,7 +557,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_1Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 1Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_1Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 1Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
@@ -572,7 +572,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_2Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 2Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_2Tag_PUReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 2Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
@@ -750,11 +750,25 @@ void makePlots()
 
 
   // Muon multiplicity plots
+//   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
+//                    "DATA__cutHisto_allPreviousCuts________nMuons_pretag",
+//                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons_pretag",
+//                    "nMuons_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
+// 
+//   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
+//                     "DATA__h1_nMuons_vs_DijetMass_pretag",
+//                     "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
+//                     "nMuons_vs_DijetMass_PUSFkFReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Entries", 944, 6000, 0.01, 20000);
+// 
+//   data_MC_ratio_r("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
+//                   "DATA__h1_nMuons_vs_DijetMass_pretag",
+//                   "QCD_Pythia6__h1_nMuons_vs_DijetMass_pretag",
+//                   "nMuons_vs_DijetMass_ratio_PUSFkFReweighted_Full2011.png", "", 42, xbins, "Dijet Mass [GeV]", "Data/MC", 944, 6000);
 //   // TCHEL 0Tag
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_0Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 0Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_0Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 0Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
@@ -769,7 +783,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_1Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 1Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_1Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 1Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
@@ -784,7 +798,7 @@ void makePlots()
 //   overlay_DATA_MC("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                    "DATA__cutHisto_allPreviousCuts________nMuons",
 //                    "QCD_Pythia6__cutHisto_allPreviousCuts________nMuons",
-//                    "nMuons_TCHEL_2Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 2Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy");
+//                    "nMuons_TCHEL_2Tag_PUSFkFReweighted_Full2011.png", "M_{jj}>944 GeV, TCHEL 2Tag", "Muon Multiplicity", "Events", -0.5, 5.5, "Logy", 1, 0.1, 1e6);
 // 
 //   overlay_DATA_MC_r("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUSFkFReweighted_bPartonMatching/Final__histograms.root",
 //                     "DATA__h1_nMuons_vs_DijetMass",
