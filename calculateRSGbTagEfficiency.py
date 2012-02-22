@@ -284,16 +284,16 @@ def main_syst(inputDirs, tagger, BR, outputFilename):
   
 if __name__ == "__main__":
  
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.75, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.1, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.75, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted', 'TCHEL', 0.1, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
 
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_SFUp_TCHEL.png')
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_SFUp_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_SFUp_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_SFUp_TCHEL.png')
 
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_SFDown_TCHEL.png')
-  main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_SFDown_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown', 'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_SFDown_TCHEL.png')
+  #main('CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown', 'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_SFDown_TCHEL.png')
 
   
   # efficiency plots with systematic uncertainty bands
@@ -316,5 +316,10 @@ if __name__ == "__main__":
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
             'TCHEL', 0.1, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+
+  main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
+             'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
+             'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
+            'TCHEL', 0.01, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')            
             
       
