@@ -5,11 +5,9 @@
 #include "TCanvas.h"
 #include "TH1D.h"
 #include "TF1.h"
-// #include "TGraphAsymmErrors.h"
 #include "TString.h"
 #include "TMinuit.h"
 #include "TVirtualFitter.h"
-// #include "TLine.h"
 #include "TLatex.h"
 #include "TLegend.h"
 
@@ -23,7 +21,7 @@ Double_t fitQCD1(Double_t *m, Double_t *p)
 
 void performFit(const string& fInputFile, const string& fPlot, const Int_t fNbins, const Double_t *fBins,
                 const Double_t fLumi, const Double_t fFitXmin, const Double_t fFitXmax, const string& fLabel,
-                const string& fOutputFile)
+                const string& fOutputFile, const Double_t fP0=1e-04, const Double_t fP1=1e+01, const Double_t fP2=4e+00, const Double_t fP3=-0.1e-01)
 {
   gROOT->SetBatch(kTRUE);
   gStyle->SetOptStat(kFALSE);
@@ -32,7 +30,7 @@ void performFit(const string& fInputFile, const string& fPlot, const Int_t fNbin
   gStyle->SetPadRightMargin(0.07);
 
 //   cout << "Default number of iterations: " << TVirtualFitter::GetMaxIterations() << endl;
-  TVirtualFitter::SetMaxIterations(5000);
+  TVirtualFitter::SetMaxIterations(10000);
 
   TFile *file = new TFile(fInputFile.c_str());
 
@@ -62,10 +60,10 @@ void performFit(const string& fInputFile, const string& fPlot, const Int_t fNbin
   // Fit to data
   TF1 *fit = new TF1("fit",fitQCD1,fFitXmin,fFitXmax,4); // 4 Par. Fit
 //   gStyle->SetOptFit(1111);
-  fit->SetParameter(0,1e-04);
-  fit->SetParameter(1,1e+01);
-  fit->SetParameter(2,4e+00);
-  fit->SetParameter(3,-0.1e-01);
+  fit->SetParameter(0,fP0);
+  fit->SetParameter(1,fP1);
+  fit->SetParameter(2,fP2);
+  fit->SetParameter(3,fP3);
   fit->SetLineWidth(2);
   fit->SetLineColor(kBlue);
   h1_plot_diff->Fit("fit","R");
@@ -118,32 +116,58 @@ void makePlots()
   Double_t xbins[] = {944, 1000, 1058, 1118, 1181, 1246, 1313, 1383, 1455, 1530, 1607, 1687, 1770, 1856, 1945, 2037, 2132, 2231, 2332, 2438, 2546, 2659, 2775, 2895, 3019, 3147, 3279, 3416, 3558, 3704, 3854, 4010, 4171, 4337, 4509, 4686, 4869, 5058, 5253, 5455, 5663, 5877, 6000};
 
   
-  performFit("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
-             "DATA__cutHisto_allPreviousCuts________DijetMass_pretag", 42, xbins,
-             4679, 944, 4000, "M_{jj}>944 GeV", "DijetMass_fit.png");
+//   performFit("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass_pretag", 42, xbins,
+//              4679, 944, 4000, "M_{jj}>944 GeV", "DijetMass_fit.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 4000, "M_{jj}>944 GeV, TCHEL 0Tag", "DijetMass_fit_TCHEL_0Tag.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 4000, "M_{jj}>944 GeV, TCHEL 1Tag", "DijetMass_fit_TCHEL_1Tag.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 3600, "M_{jj}>944 GeV, TCHEL 2Tag", "DijetMass_fit_TCHEL_2Tag.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_SSVHPT_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 4000, "M_{jj}>944 GeV, SSVHPT 0Tag", "DijetMass_fit_SSVHPT_0Tag.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 3400, "M_{jj}>944 GeV, SSVHPT 1Tag", "DijetMass_fit_SSVHPT_1Tag.png");
+// 
+//   performFit("CRAB_Jobs_MainAnalysis_SSVHPT_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+//              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
+//              4679, 944, 2600, "M_{jj}>944 GeV, SSVHPT 2Tag", "DijetMass_fit_SSVHPT_2Tag.png");
 
-  performFit("CRAB_Jobs_MainAnalysis_TCHEL_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+  
+  performFit("CRAB_Jobs_MainAnalysis_JPL_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 4000, "M_{jj}>944 GeV, TCHEL 0Tag", "DijetMass_fit_TCHEL_0Tag.png");
+             4679, 944, 3600, "M_{jj}>944 GeV, JPL 2Tag", "DijetMass_fit_JPL_2Tag.png", 2e-01, 2e+01, -2e+00, -1e+00);
 
-  performFit("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
+  performFit("CRAB_Jobs_MainAnalysis_JPM_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 4000, "M_{jj}>944 GeV, TCHEL 1Tag", "DijetMass_fit_TCHEL_1Tag.png");
+             4679, 944, 2800, "M_{jj}>944 GeV, JPM 2Tag", "DijetMass_fit_JPM_2Tag.png", 2e-19, -2e+01, 2e+01, 4e+00);
 
-  performFit("CRAB_Jobs_MainAnalysis_TCHEL_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+  performFit("CRAB_Jobs_MainAnalysis_JPT_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 3600, "M_{jj}>944 GeV, TCHEL 2Tag", "DijetMass_fit_TCHEL_2Tag.png");
+             4679, 944, 2200, "M_{jj}>944 GeV, JPT 2Tag", "DijetMass_fit_JPT_2Tag.png", 4e-12, -5e+00, 1e+01, -4e-01);
 
-  performFit("CRAB_Jobs_MainAnalysis_SSVHPT_0Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+  performFit("CRAB_Jobs_MainAnalysis_CSVL_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 4000, "M_{jj}>944 GeV, SSVHPT 0Tag", "DijetMass_fit_SSVHPT_0Tag.png");
+             4679, 944, 3600, "M_{jj}>944 GeV, CSVL 2Tag", "DijetMass_fit_CSVL_2Tag.png", 1e-05, 1e+01, 2e+00, -4e-01);
 
-  performFit("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root",
+  performFit("CRAB_Jobs_MainAnalysis_CSVM_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 3400, "M_{jj}>944 GeV, SSVHPT 1Tag", "DijetMass_fit_SSVHPT_1Tag.png");
+             4679, 944, 2800, "M_{jj}>944 GeV, CSVM 2Tag", "DijetMass_fit_CSVM_2Tag.png", 5e-19, -2e+01, 2e+01, 4e+00);
 
-  performFit("CRAB_Jobs_MainAnalysis_SSVHPT_2Tag_PUReweighted_bPartonMatching/Final__histograms.root",
+  performFit("CRAB_Jobs_MainAnalysis_CSVT_2Tag_DataOnly/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 42, xbins,
-             4679, 944, 2600, "M_{jj}>944 GeV, SSVHPT 2Tag", "DijetMass_fit_SSVHPT_2Tag.png");
+             4679, 944, 2000, "M_{jj}>944 GeV, CSVT 2Tag", "DijetMass_fit_CSVT_2Tag.png", 1e-12, -1e+01, 1e+01, 1e+00);
+  
 }
 
