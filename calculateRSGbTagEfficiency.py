@@ -300,26 +300,26 @@ if __name__ == "__main__":
   main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
-            'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+             'TCHEL', 1., 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
 
   main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
-            'TCHEL', 0.75, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+             'TCHEL', 0.75, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
 
   main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
-            'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+             'TCHEL', 0.5, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
 
   main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
-            'TCHEL', 0.1, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
+             'TCHEL', 0.1, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
 
   main_syst(['CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFUp',
              'CRAB_Jobs_RSGraviton_bTagEfficiency_TCHEL_PUSFReweighted_SFDown'],
-            'TCHEL', 0.01, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')            
+             'TCHEL', 0.01, 'RSG_bTagEfficiency_PUSFReweighted_TCHEL.png')
             
       
