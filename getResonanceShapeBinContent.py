@@ -3,7 +3,7 @@
 import os
 from ROOT import *
 
-path_prefix = 'RSG_template_files'
+path_prefix = 'RSG_resonance_shape_files'
 histo_name = 'myAnalyzer/cutHisto_allPreviousCuts________x_bbbar'
 
 files = [
