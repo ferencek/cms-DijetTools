@@ -34,15 +34,15 @@
 using namespace std;
 
 bool DEBUG=false;
-TFile *file_tchel;
-TFile *file_ssvhpt;
+TFile *file_csvl;
+TFile *file_csvm;
 double MCnHtotal=0.;
 double MCnLtotal=0.;
 
 void INIT(void)
 {
-  file_tchel=new TFile("CRAB_Jobs_MainAnalysis_TCHEL_1Tag_PUSFReweighted_bPartonMatching_EventBins/Final__histograms.root");
-  file_ssvhpt=new TFile("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUSFReweighted_bPartonMatching_EventBins/Final__histograms.root");
+  file_csvl=new TFile("CRAB_Jobs_MainAnalysis_CSVL_PUSFReweighted_PartonMatching_EventBins/Final__histograms.root");
+  file_csvm=new TFile("CRAB_Jobs_MainAnalysis_CSVM_PUSFReweighted_PartonMatching_EventBins/Final__histograms.root");
   return;
 }
 
@@ -74,15 +74,15 @@ Double_t getNumber(const string& fNumber, const Int_t fBin, const string& fBTagg
     assert(0);
   }
 
-  if(fBTagger!="TCHEL" && fBTagger!="SSVHPT")
+  if(fBTagger!="CSVL" && fBTagger!="CSVM")
   {
-    cout<<"Allowed b-taggers are TCHEL and SSVHPT."<<endl;
+    cout<<"Allowed b-taggers are CSVL and CSVM."<<endl;
     return -1;
   }
 
   TFile* file=0;
-  if(fBTagger=="TCHEL") file=file_tchel;
-  else if(fBTagger=="SSVHPT") file=file_ssvhpt;
+  if(fBTagger=="CSVL") file=file_csvl;
+  else if(fBTagger=="CSVM") file=file_csvm;
   file->cd();
 
   string muString, etaString;
@@ -187,45 +187,45 @@ void fcn(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 {
   double K=par[0];
   double muSF=par[1];
-  f=nll("TCHEL", K, muSF)+nll("SSVHPT", K, muSF);
+  f=nll("CSVL", K, muSF)+nll("CSVM", K, muSF);
   return;
 }
 
-void fcn_TCOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
+void fcn_CSVLOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 {
   double K=par[0];
   double muSF=par[1];
-  f=nll("TCHEL", K, muSF);
+  f=nll("CSVL", K, muSF);
   return;
 }
 
-void fcn_SSVOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
+void fcn_CSVMOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 {
   double K=par[0];
   double muSF=par[1];
-  f=nll("SSVHPT", K, muSF);
+  f=nll("CSVM", K, muSF);
   return;
 }
 
 void minimize(void)
 {
   INIT();
-  INIT_HFFraction("TCHEL"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHEL")
+  INIT_HFFraction("CSVL"); // here it does not matter which b-tagger is used (it can be either "CSVM" or "CSVL")
 
   cout << "MCnTotal=" << (MCnLtotal+MCnHtotal) << endl;
   cout << "HF fraction=" << (MCnHtotal/(MCnLtotal+MCnHtotal)) << endl;
 
   // make some parameter choices
   //  muSF=0.9; // muon SF
-  int whichTagger=0; // 0 = combined, 1=TC only, 2=SSV only
+  int whichTagger=0; // 0 = combined, 1=CSVL only, 2=CSVM only
   int printlevel=2; // -1 = suppressed, 0 = normal, 1 = verbose
   bool fixMuSF=true; // fix the SF to unity
 
   TMinuit t;
   t.SetPrintLevel(printlevel);
   if(whichTagger==0) t.SetFCN(fcn);
-  if(whichTagger==1) t.SetFCN(fcn_TCOnly);
-  if(whichTagger==2) t.SetFCN(fcn_SSVOnly);
+  if(whichTagger==1) t.SetFCN(fcn_CSVLOnly);
+  if(whichTagger==2) t.SetFCN(fcn_CSVMOnly);
   t.DefineParameter(0, "HF K factor", 1.0, 0.1, 0.0, 5.0);
   t.DefineParameter(1, "muon SF", 1.0, 0.1, 0.0, 2.0);
 
