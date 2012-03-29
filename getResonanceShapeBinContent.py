@@ -3,7 +3,7 @@
 import os
 from ROOT import *
 
-path_prefix = 'Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes'
+path_prefix = 'Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes_WideJets'
 
 histo_names = [
     'myAnalyzer/cutHisto_allPreviousCuts________x_dist_500',
@@ -22,11 +22,11 @@ files = [
 ]
 
 array_names = [
-    'y500[50]',
-    'y700[50]',
-    'y1200[50]',
-    'y2000[50]',
-    'y3500[50]'
+    'double y500[50]',
+    'double y700[50]',
+    'double y1200[50]',
+    'double y2000[50]',
+    'double y3500[50]'
 ]
 
 for i, fl in enumerate(files):
@@ -39,5 +39,5 @@ for i, fl in enumerate(files):
     array_string += str(histo.GetBinContent(b))
     if b<histo.GetNbinsX(): array_string += ', '
 
-  array_string += '}'
+  array_string += '};'
   print array_string
