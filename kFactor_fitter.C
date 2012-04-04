@@ -10,8 +10,8 @@
     2: 1.2=<|eta|<=2.5
 
   C: dijet mass bin
-    1: 944<=mass<1000 GeV
-    2: 1000<=mass<1200 GeV
+    1: 890<=mass<950 GeV
+    2: 950<=mass<1200 GeV
     3: 1200<=mass<1800 GeV
     4: 1800<=mass<2500 GeV
     5: 2500<=mass<6000 GeV
@@ -41,8 +41,8 @@ double MCnLtotal=0.;
 
 void INIT(void)
 {
-  file_csvl=new TFile("CRAB_Jobs_MainAnalysis_CSVL_PUSFReweighted_PartonMatching_EventBins/Final__histograms.root");
-  file_csvm=new TFile("CRAB_Jobs_MainAnalysis_CSVM_PUSFReweighted_PartonMatching_EventBins/Final__histograms.root");
+  file_csvl=new TFile("CRAB_Jobs_MainAnalysis_CSVL_PUSFReweighted_PartonMatching_WideJets_EventBins/Final__histograms.root");
+  file_csvm=new TFile("CRAB_Jobs_MainAnalysis_CSVM_PUSFReweighted_PartonMatching_WideJets_EventBins/Final__histograms.root");
   return;
 }
 
@@ -97,8 +97,7 @@ Double_t getNumber(const string& fNumber, const Int_t fBin, const string& fBTagg
 
   TH2D *h2 = (TH2D*)file->Get(histoName.c_str());
 
-  Int_t binsX[] = {944, 1000, 1200, 1800, 2500, 6000};
-//   Int_t binsX[] = {944, 980, 1500, 2000, 2500, 6000};
+  Int_t binsX[] = {890, 950, 1200, 1800, 2500, 6000};
   Int_t binsY[] = {0,6,9,41};
 
   Double_t Integral = h2->Integral(binsX[massBin-1]+1,binsX[massBin],binsY[pvBin-1]+1,binsY[pvBin]);
