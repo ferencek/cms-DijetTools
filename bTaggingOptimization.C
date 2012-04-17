@@ -9,14 +9,22 @@
 #include "TLegend.h"
 #include "TLine.h"
 #include "TLatex.h"
+#include "tdrstyle.C"
 
 
 void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& fBinLabel)
 {
   gROOT->SetBatch(kTRUE);
+  setTDRStyle();
   gStyle->SetOptStat(kFALSE);
   gStyle->SetLabelSize(0.035, "XYZ");
   gStyle->SetPaintTextFormat("1.2g");
+  gStyle->SetPalette(1);
+  gStyle->SetPadTopMargin(0.08);
+  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.12);
+  gStyle->SetPadRightMargin(0.08);
+  gROOT->ForceStyle();
 
   map<Int_t,string> algoMap;
   algoMap[1] = "TCHEL"; algoMap[2] = "TCHEM"; algoMap[3] = "TCHET"; algoMap[4] = "TCHPL"; algoMap[5] = "TCHPM"; algoMap[6] = "TCHPT"; algoMap[7] = "SSVHEM"; algoMap[8] = "SSVHET"; algoMap[9] = "SSVHPT";
@@ -107,8 +115,21 @@ void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& 
 
 //   c->SaveAs(("DoubleTag_optimization_QCD_" + fDijetMassBin + "_QCDInclusive.png").c_str());
 
-  h2_opt_RSGravitonToBBbar->SetTitle(("Optimization -- #epsilon_{RSG#rightarrowb#bar{b}}/#sqrt{#epsilon_{QCD}}, " + fBinLabel).c_str());
+//   h2_opt_RSGravitonToBBbar->SetTitle(("#epsilon_{G#rightarrowb#bar{b}}/#sqrt{#epsilon_{QCD}} -- " + fBinLabel).c_str());
+//   gStyle->SetTitleFont(42);
   h2_opt_RSGravitonToBBbar->Draw("colztext");
+
+  TLatex l1;
+  l1.SetTextAlign(12);
+  l1.SetTextFont(42);
+  l1.SetNDC();
+  l1.SetTextSize(0.05);
+  l1.DrawLatex(0.02,0.96, ("#epsilon_{G#rightarrowb#bar{b}}/#sqrt{#epsilon_{QCD}} -- " + fBinLabel).c_str());
+  l1.SetTextSize(0.04);
+  l1.DrawLatex(0.15,0.87, "CMS Simulation");
+  l1.DrawLatex(0.16,0.82, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.15,0.77, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.15,0.72, "Anti-k_{T} R = 0.7 PF Jets");
 
   c->SaveAs(("DoubleTag_optimization_RSGravitonToBBbar_" + fDijetMassBin + "_QCDInclusive.png").c_str());
 
@@ -119,13 +140,13 @@ void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& 
 void makePlots()
 {
 
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass500to1000GeV", "0.5<M_{jj}<1 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass1000to1500GeV", "1<M_{jj}<1.5 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass1500to2000GeV", "1.5<M_{jj}<2 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass2000to2500GeV", "2<M_{jj}<2.5 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass2500to3000GeV", "2.5<M_{jj}<3 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass3000to3500GeV", "3<M_{jj}<3.5 TeV");
-  bTaggingOptimization_2Tag_15x15_QCDInclusive("DijetMass3500to4000GeV", "3.5<M_{jj}<4 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass500to1000GeV", "0.5<m_{jj}<1 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass1000to1500GeV", "1<m_{jj}<1.5 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass1500to2000GeV", "1.5<m_{jj}<2 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass2000to2500GeV", "2<m_{jj}<2.5 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass2500to3000GeV", "2.5<m_{jj}<3 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass3000to3500GeV", "3<m_{jj}<3.5 TeV");
+  bTaggingOptimization_2Tag_15x15("DijetMass3500to4000GeV", "3.5<m_{jj}<4 TeV");
   
 }
 
