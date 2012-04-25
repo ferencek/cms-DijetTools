@@ -5,11 +5,13 @@
 #include "TCanvas.h"
 #include "TH1D.h"
 #include "TF1.h"
+#include "TLatex.h"
 #include "TLegend.h"
+#include "tdrstyle.C"
+
 
 using namespace std;
 
-void setTDRStyle();
 
 void ResonanceShape(const string& fInputFile, const string& fPlot, const Int_t fRebin,
                     const string& fTitle, const string& fLabel, const string& fXAxisTitle, const string& fYAxisTitle,
@@ -52,6 +54,10 @@ void ResonanceShape_var_bins(const string& fInputFile, const string& fPlot1, con
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
   gStyle->SetOptStat(kFALSE);
+  gStyle->SetPadTopMargin(0.08);
+  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.15);
+  gStyle->SetPadRightMargin(0.05);
   gROOT->ForceStyle();
 
   TFile *file = new TFile(fInputFile.c_str());
@@ -100,11 +106,23 @@ void ResonanceShape_var_bins(const string& fInputFile, const string& fPlot1, con
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
   legend->SetTextFont(42);
-  legend->SetTextSize(0.03);
+  legend->SetTextSize(0.04);
   legend->AddEntry(h1_plot1,fLegend1.c_str(),"l");
   legend->AddEntry(h1_plot2,fLegend2.c_str(),"l");
   legend->Draw();
 
+  TLatex l1;
+  l1.SetTextAlign(12);
+  l1.SetTextFont(42);
+  l1.SetNDC();
+  l1.SetTextSize(0.05);
+  l1.DrawLatex(0.2,0.85, fTitle.c_str());
+  l1.SetTextSize(0.04);
+  l1.DrawLatex(0.61,0.34, "CMS Simulation");
+  l1.DrawLatex(0.62,0.29, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.61,0.24, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.61,0.19, "Wide Jets");
+  
 //   c->SetLogy();
   c->SaveAs(fOutputFile.c_str());
 
@@ -187,6 +205,10 @@ void ResonanceShapes_finalStates(const string& fInputFile1, const string& fInput
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
   gStyle->SetOptStat(kFALSE);
+  gStyle->SetPadTopMargin(0.08);
+  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.15);
+  gStyle->SetPadRightMargin(0.05);
   gROOT->ForceStyle();
 
   TFile *file1 = new TFile(fInputFile1.c_str());
@@ -200,7 +222,7 @@ void ResonanceShapes_finalStates(const string& fInputFile1, const string& fInput
   TCanvas *c = new TCanvas("c", "",800,800);
   c->cd();
 
-  h1_plot1->SetTitle(fTitle.c_str());
+//   h1_plot1->SetTitle(fTitle.c_str());
   h1_plot1->SetTitleFont(42);
   h1_plot1->GetXaxis()->SetTitle(fXAxisTitle.c_str());
   h1_plot1->GetYaxis()->SetTitle(fYAxisTitle.c_str());
@@ -236,6 +258,18 @@ void ResonanceShapes_finalStates(const string& fInputFile1, const string& fInput
   legend->AddEntry(h1_plot3,fLegend3.c_str(),"l");
   legend->Draw();
 
+  TLatex l1;
+  l1.SetTextAlign(12);
+  l1.SetTextFont(42);
+  l1.SetNDC();
+  l1.SetTextSize(0.05);
+  l1.DrawLatex(0.2,0.85, fTitle.c_str());
+  l1.SetTextSize(0.04);
+  l1.DrawLatex(0.61,0.34, "CMS Simulation");
+  l1.DrawLatex(0.62,0.29, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.61,0.24, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.61,0.19, "Wide Jets");
+
   gPad->RedrawAxis();
   
 //   c->SetLogy();
@@ -253,12 +287,14 @@ void ResonanceShapes_masses(const string& fInputFile, const string& fPlotPrefix,
   gStyle->SetOptStat(kFALSE);
   gStyle->SetPadTopMargin(0.08);
   gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.13);
+  gStyle->SetPadRightMargin(0.07);
   gROOT->ForceStyle();
 
   TFile *file = new TFile(fInputFile.c_str());
 
   string masses[7] = {"1000", "1500", "2000", "2500", "3000" , "3500", "4000"};
-  string legends[7] = {"1 TeV", "1.5 TeV", "2 TeV", "2.5 TeV", "3 TeV" , "3.5 TeV", "4 TeV"};
+  string legends[7] = {"M = 1 TeV", "M = 1.5 TeV", "M = 2 TeV", "M = 2.5 TeV", "M = 3 TeV" , "M = 3.5 TeV", "M = 4 TeV"};
   
   TH1D *h1_plot[7];
 
@@ -274,16 +310,17 @@ void ResonanceShapes_masses(const string& fInputFile, const string& fPlotPrefix,
   TCanvas *c = new TCanvas("c", "",1200,800);
   c->cd();
 
-  h1_plot[0]->SetTitle(fTitle.c_str());
+//   h1_plot[0]->SetTitle(fTitle.c_str());
   h1_plot[0]->SetTitleFont(42);
   h1_plot[0]->GetXaxis()->SetTitle(fXAxisTitle.c_str());
   h1_plot[0]->GetYaxis()->SetTitle(fYAxisTitle.c_str());
+  h1_plot[0]->SetTitleOffset(1.,"Y");
   h1_plot[0]->GetXaxis()->SetRangeUser(fXmin,fXmax);
   if(fYmin!=fYmax) h1_plot[0]->GetYaxis()->SetRangeUser(fYmin,fYmax);
 
   h1_plot[0]->Draw("hist");
 
-  TLegend *legend = new TLegend(.75,.35,.95,.85);
+  TLegend *legend = new TLegend(.68,.45,.88,.85);
   legend->SetBorderSize(0);
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
@@ -300,6 +337,18 @@ void ResonanceShapes_masses(const string& fInputFile, const string& fPlotPrefix,
   legend->Draw();
 
   gPad->RedrawAxis();
+
+  TLatex l1;
+  l1.SetTextAlign(12);
+  l1.SetTextFont(42);
+  l1.SetNDC();
+  l1.SetTextSize(0.05);
+  l1.DrawLatex(0.17,0.85, fTitle.c_str());
+  l1.SetTextSize(0.04);
+  l1.DrawLatex(0.70,0.34, "CMS Simulation");
+  l1.DrawLatex(0.71,0.29, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.70,0.24, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.70,0.19, "Wide Jets");
   
 //   c->SetLogy();
   c->SaveAs(fOutputFile.c_str());
@@ -419,64 +468,65 @@ void makePlots()
 //                           "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
 //                           "M=1200 GeV", "RSG#rightarrowb#bar{b}", "RSG#rightarrowb#bar{b}, CSVL 2Tag", "Dijet Mass [GeV]", "", 0, 2775,
 //                           "ResonanceShape_RSG_M-1200_CSVL_2Tag.png", 0, 0.23);
-//   
+
+                      
   // M-2000
   // RSG->bbbar
   // CSVL 0Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_bbbar",
                           "myAnalyzer/h1_DijetMass_bbbar_0tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowb#bar{b}", "RSG#rightarrowb#bar{b}, CSVL 0-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, CSVL 0-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToBBbar_M-2000_CSVL_0Tag.png", 0, 0.22);
   // CSVL 1Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_bbbar",
                           "myAnalyzer/h1_DijetMass_bbbar_1tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowb#bar{b}", "RSG#rightarrowb#bar{b}, CSVL 1-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, CSVL 1-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToBBbar_M-2000_CSVL_1Tag.png", 0, 0.22);
   // CSVL 2Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_bbbar",
                           "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowb#bar{b}", "RSG#rightarrowb#bar{b}, CSVL 2-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, CSVL 2-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToBBbar_M-2000_CSVL_2Tag.png", 0, 0.22);
   // RSG->qqbar
   // CSVL 0Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToQQbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_qqbarlight",
                           "myAnalyzer/h1_DijetMass_qqbarlight_0tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowq#bar{q}, CSVL 0-tag", "Dijet Mass [GeV]", "", 0, 6000,
-                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_0Tag.png", 0, 0.27, "myAnalyzer/h1_DijetMass_bbbar_0tag", "myAnalyzer/h1_DijetMass_ccbar_0tag");
+                          "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, CSVL 0-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_0Tag.png", 0, 0.35);
   // CSVL 1Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToQQbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_qqbarlight",
                           "myAnalyzer/h1_DijetMass_qqbarlight_1tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowq#bar{q}, CSVL 1-tag", "Dijet Mass [GeV]", "", 0, 6000,
-                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_1Tag.png", 0, 0.27, "myAnalyzer/h1_DijetMass_bbbar_1tag", "myAnalyzer/h1_DijetMass_ccbar_1tag");
+                          "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, CSVL 1-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_1Tag.png", 0, 0.35);
   // CSVL 2Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToQQbar_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_qqbarlight",
                           "myAnalyzer/h1_DijetMass_qqbarlight_2tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowq#bar{q}, CSVL 2-tag", "Dijet Mass [GeV]", "", 0, 6000,
-                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_2Tag.png", 0, 0.27, "myAnalyzer/h1_DijetMass_bbbar_2tag", "myAnalyzer/h1_DijetMass_ccbar_2tag");
+                          "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, CSVL 2-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+                          "ResonanceShape_RSGToQQbar_M-2000_CSVL_2Tag.png", 0, 0.35);
   // RSG->gg
   // CSVL 0Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToGG_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_gg",
                           "myAnalyzer/h1_DijetMass_gg_0tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowgg", "RSG#rightarrowgg, CSVL 0-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, CSVL 0-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToGG_M-2000_CSVL_0Tag.png", 0, 0.25);
   // CSVL 1Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToGG_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_gg",
                           "myAnalyzer/h1_DijetMass_gg_1tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowgg", "RSG#rightarrowgg, CSVL 1-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, CSVL 1-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToGG_M-2000_CSVL_1Tag.png", 0, 0.25);
   // CSVL 2Tag
-  ResonanceShape_var_bins("Resonance_shape_files/CRAB_Jobs_RSGravitonToGG_ResonanceShapes_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-                          "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar",
+  ResonanceShape_var_bins("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+                          "myAnalyzer/h1_DijetMass_gg",
                           "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
-                          "M=2 TeV, Wide Jets", "RSG#rightarrowgg", "RSG#rightarrowgg, CSVL 2-tag", "Dijet Mass [GeV]", "", 0, 6000,
+                          "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, CSVL 2-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
                           "ResonanceShape_RSGToGG_M-2000_CSVL_2Tag.png", 0, 0.25);
 //   
 //   // M-3500
@@ -500,34 +550,34 @@ void makePlots()
 //                           "ResonanceShape_RSG_M-3500_CSVL_2Tag.png", 0, 0.16);
 
 //   // ## Resonance shapes for different final states
-//   ResonanceShapes_finalStates("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_qq.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_bb.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_gg.root",
-//                               "h_qq_1000", "h_bb_1000", "h_gg_1000", "M=1 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "RSG#rightarrowgg",
-//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-1000.png", 1, 3416);
+//   ResonanceShapes_finalStates("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_1000", "h_bb_1000", "h_gg_1000", "M=1 TeV", "G#rightarrowq#bar{q}", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-1000.png", 1, 2546);
 // 
-//   ResonanceShapes_finalStates("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_qq.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_bb.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_gg.root",
-//                               "h_qq_2000", "h_bb_2000", "h_gg_2000", "M=2 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "RSG#rightarrowgg",
-//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-2000.png", 1, 3416);
+//   ResonanceShapes_finalStates("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_2000", "h_bb_2000", "h_gg_2000", "M=2 TeV", "G#rightarrowq#bar{q}", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-2000.png", 1, 4010);
 // 
-//   ResonanceShapes_finalStates("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_qq.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_bb.root",
-//                               "Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_gg.root",
-//                               "h_qq_3000", "h_bb_3000", "h_gg_3000", "M=3 TeV, Wide Jets", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "RSG#rightarrowgg",
-//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-3000.png", 1, 3416);
+//   ResonanceShapes_finalStates("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
+//                               "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_3000", "h_bb_3000", "h_gg_3000", "M=3 TeV", "G#rightarrowq#bar{q}", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-3000.png", 1, 6000);
 
 //   // ## Resonance shapes for different masses
-//   ResonanceShapes_masses("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_qq.root",
-//                          "h_qq_", "RSG#rightarrowq#bar{q}, Wide Jets", "Dijet Mass [GeV]", "",
-//                          "ResonanceShapes_RSGToQQbar.png", 1, 5876, 0, 0.3);
-//   ResonanceShapes_masses("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_bb.root",
-//                          "h_bb_", "RSG#rightarrowb#bar{b}, Wide Jets", "Dijet Mass [GeV]", "",
-//                          "ResonanceShapes_RSGToBBbar.png", 1, 5876, 0, 0.3);
-//   ResonanceShapes_masses("Resonance_shape_files/Interpolation_code/Resonance_Shapes_WideJets_gg.root",
-//                          "h_gg_", "RSG#rightarrowgg, Wide Jets", "Dijet Mass [GeV]", "",
-//                          "ResonanceShapes_RSGToGG.png", 1, 5876, 0, 0.3);
+//   ResonanceShapes_masses("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
+//                          "h_qq_", "G#rightarrowq#bar{q}", "Dijet Mass [GeV]", "",
+//                          "ResonanceShapes_RSGToQQbar.png", 1, 6000, 0, 0.3);
+//   ResonanceShapes_masses("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
+//                          "h_bb_", "G#rightarrowb#bar{b}", "Dijet Mass [GeV]", "Probability",
+//                          "ResonanceShapes_RSGToBBbar.png", 1, 6000, 0, 0.3);
+//   ResonanceShapes_masses("Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
+//                          "h_gg_", "G#rightarrowgg", "Dijet Mass [GeV]", "",
+//                          "ResonanceShapes_RSGToGG.png", 1, 6000, 0, 0.3);
   
   // ## Reshaped resonance shape
 
@@ -537,146 +587,4 @@ void makePlots()
 //                           3429., 143.9, 3383., 171.5,
 //                           "M=3500 GeV", "#splitline{RSG#rightarrowq#bar{q}}{reshaped}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 5663,
 //                           "ResonanceShape_RSG_M-3500_reshaped.png");
-}
-
-void setTDRStyle() {
-  TStyle *tdrStyle = new TStyle("tdrStyle","Style for P-TDR");
-
-  // For the canvas:
-  tdrStyle->SetCanvasBorderMode(0);
-  tdrStyle->SetCanvasColor(kWhite);
-  tdrStyle->SetCanvasDefH(600); //Height of canvas
-  tdrStyle->SetCanvasDefW(600); //Width of canvas
-  tdrStyle->SetCanvasDefX(0);   //POsition on screen
-  tdrStyle->SetCanvasDefY(0);
-
-  // For the Pad:
-  tdrStyle->SetPadBorderMode(0);
-  // tdrStyle->SetPadBorderSize(Width_t size = 1);
-  tdrStyle->SetPadColor(kWhite);
-  tdrStyle->SetPadGridX(false);
-  tdrStyle->SetPadGridY(false);
-  tdrStyle->SetGridColor(0);
-  tdrStyle->SetGridStyle(3);
-  tdrStyle->SetGridWidth(1);
-
-  // For the frame:
-  tdrStyle->SetFrameBorderMode(0);
-  tdrStyle->SetFrameBorderSize(1);
-  tdrStyle->SetFrameFillColor(0);
-  tdrStyle->SetFrameFillStyle(0);
-  tdrStyle->SetFrameLineColor(1);
-  tdrStyle->SetFrameLineStyle(1);
-  tdrStyle->SetFrameLineWidth(1);
-
-  // For the histo:
-  tdrStyle->SetHistFillColor(63);
-  // tdrStyle->SetHistFillStyle(0);
-  tdrStyle->SetHistLineColor(1);
-  tdrStyle->SetHistLineStyle(0);
-  tdrStyle->SetHistLineWidth(1);
-  // tdrStyle->SetLegoInnerR(Float_t rad = 0.5);
-  // tdrStyle->SetNumberContours(Int_t number = 20);
-
-//  tdrStyle->SetEndErrorSize(0);
-//   tdrStyle->SetErrorX(0.);
-//  tdrStyle->SetErrorMarker(20);
-
-  tdrStyle->SetMarkerStyle(20);
-
-  //For the fit/function:
-  tdrStyle->SetOptFit(1);
-  tdrStyle->SetFitFormat("5.4g");
-  tdrStyle->SetFuncColor(2);
-  tdrStyle->SetFuncStyle(1);
-  tdrStyle->SetFuncWidth(1);
-
-  //For the date:
-  tdrStyle->SetOptDate(0);
-  // tdrStyle->SetDateX(Float_t x = 0.01);
-  // tdrStyle->SetDateY(Float_t y = 0.01);
-
-  // For the statistics box:
-  tdrStyle->SetOptFile(0);
-  tdrStyle->SetOptStat(0); // To display the mean and RMS:   SetOptStat("mr");
-  tdrStyle->SetStatColor(kWhite);
-  tdrStyle->SetStatFont(42);
-  tdrStyle->SetStatFontSize(0.025);
-  tdrStyle->SetStatTextColor(1);
-  tdrStyle->SetStatFormat("6.4g");
-  tdrStyle->SetStatBorderSize(1);
-  tdrStyle->SetStatH(0.1);
-  tdrStyle->SetStatW(0.15);
-  // tdrStyle->SetStatStyle(Style_t style = 1001);
-  // tdrStyle->SetStatX(Float_t x = 0);
-  // tdrStyle->SetStatY(Float_t y = 0);
-
-  // Margins:
-  tdrStyle->SetPadTopMargin(0.07);
-  tdrStyle->SetPadBottomMargin(0.13);
-  tdrStyle->SetPadLeftMargin(0.13);
-  tdrStyle->SetPadRightMargin(0.07);
-
-  // For the Global title:
-
-  //  tdrStyle->SetOptTitle(0);
-  tdrStyle->SetTitleFont(42);
-  tdrStyle->SetTitleColor(1);
-  tdrStyle->SetTitleTextColor(1);
-  tdrStyle->SetTitleFillColor(10);
-  tdrStyle->SetTitleFontSize(0.05);
-  // tdrStyle->SetTitleH(0); // Set the height of the title box
-  // tdrStyle->SetTitleW(0); // Set the width of the title box
-  // tdrStyle->SetTitleX(0); // Set the position of the title box
-  // tdrStyle->SetTitleY(0.985); // Set the position of the title box
-  // tdrStyle->SetTitleStyle(Style_t style = 1001);
-  // tdrStyle->SetTitleBorderSize(2);
-
-  // For the axis titles:
-
-  tdrStyle->SetTitleColor(1, "XYZ");
-  tdrStyle->SetTitleFont(42, "XYZ");
-  tdrStyle->SetTitleSize(0.06, "XYZ");
-  // tdrStyle->SetTitleXSize(Float_t size = 0.02); // Another way to set the size?
-  // tdrStyle->SetTitleYSize(Float_t size = 0.02);
-  tdrStyle->SetTitleXOffset(0.9);
-  tdrStyle->SetTitleYOffset(1.05);
-  // tdrStyle->SetTitleOffset(1.1, "Y"); // Another way to set the Offset
-
-  // For the axis labels:
-
-  tdrStyle->SetLabelColor(1, "XYZ");
-  tdrStyle->SetLabelFont(42, "XYZ");
-  tdrStyle->SetLabelOffset(0.007, "XYZ");
-  tdrStyle->SetLabelSize(0.05, "XYZ");
-
-  // For the axis:
-
-  tdrStyle->SetAxisColor(1, "XYZ");
-  tdrStyle->SetStripDecimals(kTRUE);
-  tdrStyle->SetTickLength(0.03, "XYZ");
-  tdrStyle->SetNdivisions(510, "XYZ");
-  tdrStyle->SetPadTickX(1);  // To get tick marks on the opposite side of the frame
-  tdrStyle->SetPadTickY(1);
-
-  // Change for log plots:
-  tdrStyle->SetOptLogx(0);
-  tdrStyle->SetOptLogy(0);
-  tdrStyle->SetOptLogz(0);
-
-  // Postscript options:
-  // tdrStyle->SetPaperSize(15.,15.);
-  // tdrStyle->SetLineScalePS(Float_t scale = 3);
-  // tdrStyle->SetLineStyleString(Int_t i, const char* text);
-  // tdrStyle->SetHeaderPS(const char* header);
-  // tdrStyle->SetTitlePS(const char* pstitle);
-
-  // tdrStyle->SetBarOffset(Float_t baroff = 0.5);
-  // tdrStyle->SetBarWidth(Float_t barwidth = 0.5);
-  // tdrStyle->SetPaintTextFormat(const char* format = "g");
-  // tdrStyle->SetPalette(Int_t ncolors = 0, Int_t* colors = 0);
-  // tdrStyle->SetTimeOffset(Double_t toffset);
-  // tdrStyle->SetHistMinimumZero(kTRUE);
-
-  tdrStyle->cd();
 }

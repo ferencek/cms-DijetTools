@@ -3,14 +3,19 @@
 import os
 from ROOT import *
 
-path_prefix = 'Resonance_shape_files/CRAB_Jobs_RSGravitonToBBbar_ResonanceShapes_WideJets'
+path_prefix = 'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets'
+
+histo_name_postfix = "bbbar"
+#histo_name_postfix = "ccbar"
+#histo_name_postfix = "qqbarlight"
+#histo_name_postfix = "gg"
 
 histo_names = [
-    'myAnalyzer/cutHisto_allPreviousCuts________x_dist_500',
-    'myAnalyzer/cutHisto_allPreviousCuts________x_dist_700',
-    'myAnalyzer/cutHisto_allPreviousCuts________x_dist_1200',
-    'myAnalyzer/cutHisto_allPreviousCuts________x_dist_2000',
-    'myAnalyzer/cutHisto_allPreviousCuts________x_dist_3500'
+    'myAnalyzer/x_dist_500',
+    'myAnalyzer/x_dist_700',
+    'myAnalyzer/x_dist_1200',
+    'myAnalyzer/x_dist_2000',
+    'myAnalyzer/x_dist_3500'
 ]
 
 files = [
@@ -31,7 +36,7 @@ array_names = [
 
 for i, fl in enumerate(files):
   file = TFile(os.path.join(path_prefix,fl))
-  histo = file.Get(histo_names[i])
+  histo = file.Get(histo_names[i] + '_' + histo_name_postfix)
 
   array_string = array_names[i] + ' = {'
   

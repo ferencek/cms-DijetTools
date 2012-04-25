@@ -205,7 +205,7 @@ def plot_TCHEL_CSVL(xMax,yMax,fileName,linesAlgo=""):
     algoGraphs[algo].SetLineWidth(2)
     algoGraphs[algo].SetLineColor(markerColor[algo][1])
     algoGraphs[algo].Draw("PLsame")
-    legend.AddEntry(algoGraphs[algo],algo,"lp")
+    legend.AddEntry(algoGraphs[algo],algo + ", 2-tag","lp")
 
     if algo==linesAlgo:
       for i in range(0,len(dijetMassBins)):
