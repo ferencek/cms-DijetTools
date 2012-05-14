@@ -1,7 +1,3 @@
-//Dijet Mass spectrum is compared to pythia QCD prediction, smooth fit and dijet resonance signals.
-//Author: Sertac Ozturk (Cukurova Univ. & FNAL) //sertac@fnal.gov , sertac.ozturk@cern.ch32
-//Modified by chiyoung Jeong -- chiyoung.jeong@gmail.com
-
 #include <iostream>
 #include "TROOT.h"
 #include "TStyle.h"
@@ -36,30 +32,25 @@ TGraph *g_eff0_l = new TGraph(5, masses_eff, eff0_l);
 TGraph *g_eff2_l = new TGraph(5, masses_eff, eff2_l);
 
 
-// QCD fit function -- alternate 4 parameter fit function -- also used for QCD fit.
+// Default fit function
 Double_t fitQCD( Double_t *m, Double_t *p)
-{
-  double x=m[0]/7000.;
-  return p[0]*pow(1.-x+p[3]*x*x,p[1])/pow(m[0],p[2]);
-}
-
-// Default fit
-Double_t fitQCD1( Double_t *m, Double_t *p)
 {
   double x=m[0]/7000.;
   return p[0]*pow(1.-x,p[1])/pow(x,p[2]+p[3]*log(x));
 }
 
-// QCD fit function -- alternate 3 parameter fit function -- also used for QCD fit.
-Double_t fitQCD2( Double_t *m, Double_t *p)
+// Alternate fit function A (4 parameter fit function)
+Double_t fitQCD_AltA( Double_t *m, Double_t *p)
 {
   double x=m[0]/7000.;
-  return p[0]*pow(1.-x,p[1])/pow(m[0],p[2]);
+  return p[0]*pow(1.-x+p[3]*x*x,p[1])/pow(m[0],p[2]);
 }
 
-Double_t fitQCD3( Double_t *m, Double_t *p)
+// Alternate fit function B (3 parameter fit function)
+Double_t fitQCD_AltB( Double_t *m, Double_t *p)
 {
-  return p[0]/pow(m[0]+p[1],p[2]);
+  double x=m[0]/7000.;
+  return p[0]*pow(1.-x,p[1])/pow(x,p[2]);
 }
 
 
@@ -76,8 +67,8 @@ void performFit(const string& fInputFile, const string& fPlot,
   gStyle->SetStatW(0.2);
   gStyle->SetStatX(0.97);
   gStyle->SetStatY(0.97);
-  gStyle->SetStatH(0);  // uncomment for PAS
-  gStyle->SetStatW(0);  // uncomment for PAS
+//   gStyle->SetStatH(0);  // uncomment for PAS
+//   gStyle->SetStatW(0);  // uncomment for PAS
   gStyle->SetPadTopMargin(0.05);
   gStyle->SetPadBottomMargin(0.13);
   gStyle->SetPadLeftMargin(0.16);
@@ -95,7 +86,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   TH1D *h1_pulls = (TH1D*)h1_plot_r->Clone("h1_pulls");
   h1_pulls->Reset();
 
-  double a = 0.3173/2;
+  const double alpha = 1 - 0.6827;
   double vx[1000],vy[1000],vexl[1000],vexh[1000],veyl[1000],veyh[1000];
   
 //   int bins_to_skip = 0;
@@ -121,25 +112,18 @@ void performFit(const string& fInputFile, const string& fPlot,
       vexh[i] = dm/2.;
       vy[i]   = n / (dm*fLumi);
 
-      if (n<25)
-      {
-          double nl = n-0.5*TMath::ChisquareQuantile(a,2*n);
-          double nh = 0.5*TMath::ChisquareQuantile(1-a,2*(n+1))-n;
-          veyl[i] = nl/(fLumi*dm);
-          veyh[i] = nh/(fLumi*dm);
-      }
-      else if (n>=25)
-      {
-          veyl[i] = sqrt(n)/(fLumi*dm);
-          veyh[i] = sqrt(n)/(fLumi*dm);
-      }
+      double l = 0.5*TMath::ChisquareQuantile(alpha/2,2*n);
+      double h = (n==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n+1)) );
+
+      veyl[i] = (n-l)/(fLumi*dm);
+      veyh[i] = (h-n)/(fLumi*dm);
   }
 
   // data in the graph format
   TGraphAsymmErrors *g = new TGraphAsymmErrors(bins_to_process,vx,vy,vexl,vexh,veyl,veyh);
 
   // Fit to data
-  TF1 *fit = new TF1("fit",fitQCD1,fFitXmin,fFitXmax,4); // 4 Par. Fit
+  TF1 *fit = new TF1("fit",fitQCD,fFitXmin,fFitXmax,4); // 4 Par. Fit
   gStyle->SetOptFit(1111);
   fit->SetParameter(0,fP0);
   fit->SetParameter(1,fP1);
@@ -169,6 +153,8 @@ void performFit(const string& fInputFile, const string& fPlot,
       double error = veyh[i];
       double m = vx[i];
       double fit_default = fit->Eval(m);
+      if(data>=fit_default) error = veyl[i];
+      if(data<fit_default)  error = veyh[i];
 
       if(error!=0.)
       {
@@ -191,7 +177,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   p_1->SetRightMargin(0.03);
   p_1->SetTopMargin(0.03);
 
-  TH1F *vFrame = p_1->DrawFrame(700.0,1.1e-07,4337.0,10.0);
+  TH1F *vFrame = p_1->DrawFrame(700.0,4.0e-08,4337.0,10.0);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
   vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
@@ -396,42 +382,42 @@ void performFit(const string& fInputFile, const string& fPlot,
   l1.SetTextFont(42);
   l1.SetNDC();
   l1.SetTextSize(0.04);
-  l1.DrawLatex(0.70,0.55, "CMS Preliminary");
-  l1.DrawLatex(0.70,0.47, "#intLdt = 5 fb^{-1}");
-  l1.DrawLatex(0.71,0.42, "#sqrt{s} = 7 TeV");
-  l1.DrawLatex(0.70,0.37, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  l1.DrawLatex(0.70,0.32, "Wide Jets");
+  l1.DrawLatex(0.70,0.57, "CMS Preliminary");
+  l1.DrawLatex(0.70,0.49, "#intLdt = 5 fb^{-1}");
+  l1.DrawLatex(0.71,0.44, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.70,0.39, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.70,0.34, "Wide Jets");
   l1.SetTextColor(kGreen+2);
   if( fLabel.find("0 b-tags")!=string::npos )
   {
-    l1.DrawLatex(0.20,0.42, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.26, "G (2 TeV)");
+    l1.DrawLatex(0.20,0.45, "G (1.4 TeV)");
+    l1.DrawLatex(0.35,0.30, "G (2 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
-    l1.DrawLatex(0.20,0.36, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.21, "G (2 TeV)");
+    l1.DrawLatex(0.20,0.40, "G (1.4 TeV)");
+    l1.DrawLatex(0.35,0.26, "G (2 TeV)");
   }
   else
   {
-    l1.DrawLatex(0.20,0.27, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.10, "G (2 TeV)");
+    l1.DrawLatex(0.20,0.32, "G (1.4 TeV)");
+    l1.DrawLatex(0.35,0.16, "G (2 TeV)");
   }
   l1.SetTextColor(kRed);
   if( fLabel.find("0 b-tags")!=string::npos )
   {
-    l1.DrawLatex(0.35,0.37, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.23, "Z' (2.4 TeV)");
+    l1.DrawLatex(0.35,0.42, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.29, "Z' (2.4 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
-    l1.DrawLatex(0.35,0.33, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.19, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.35,0.38, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.25, "Z' (1.7 TeV)");
   }
   else
   {
-    l1.DrawLatex(0.35,0.24, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.09, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.35,0.30, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.16, "Z' (1.7 TeV)");
   }
   l1.SetTextColor(kBlack);
   l1.SetTextSize(0.06);
@@ -487,7 +473,7 @@ void makePlots()
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
              43, xbins, 4976, 890, 4200, "0 b-tags",
-             "DijetMass_fit_pulls_CSVL_0Tag_WideJets.eps", 4.51941e-05, 8.49600e+00, 5.43791e+00, 5.57959e-02);
+             "DijetMass_fit_pulls_CSVL_0Tag_WideJets.eps", 4.68740e-05, 8.52546e+00, 5.40954e+00, 4.96621e-02);
 
   performFit("CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
@@ -495,7 +481,7 @@ void makePlots()
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
              43, xbins, 4976, 890, 4200, "1 b-tag",
-             "DijetMass_fit_pulls_CSVL_1Tag_WideJets.eps", 1.47135e-05, 7.82687e+00, 5.44665e+00, 5.87473e-02);
+             "DijetMass_fit_pulls_CSVL_1Tag_WideJets.eps", 1.54555e-05, 7.86212e+00, 5.40672e+00, 4.97942e-02);
 
   performFit("CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
@@ -503,5 +489,5 @@ void makePlots()
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
              43, xbins, 4976, 890, 4200, "2 b-tags",
-             "DijetMass_fit_pulls_CSVL_2Tag_WideJets.eps", 4.44868e-09, 1.34960e+00, 9.35736e+00, 8.10596e-01);
+             "DijetMass_fit_pulls_CSVL_2Tag_WideJets.eps", 2.91838e-07, 5.46299e+00, 6.37524e+00, 2.15881e-01);
 }
