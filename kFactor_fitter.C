@@ -216,7 +216,7 @@ void minimize(void)
 
   // make some parameter choices
   //  muSF=0.9; // muon SF
-  int whichTagger=0; // 0 = combined, 1=CSVL only, 2=CSVM only
+  int whichTagger=1; // 0 = combined, 1=CSVL only, 2=CSVM only
   int printlevel=2; // -1 = suppressed, 0 = normal, 1 = verbose
   bool fixMuSF=true; // fix the SF to unity
 

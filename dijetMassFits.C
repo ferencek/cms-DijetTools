@@ -103,7 +103,7 @@ void performFit(const string& fInputFile, const string& fPlot, const Int_t fNbin
 //   fit->SetParLimits(1, 0., 100.);
 //   fit->SetParLimits(2, 0., 100.);
 //   fit->SetParLimits(3,-5., 5.);
-//   fit->FixParameter(3,0);
+  fit->FixParameter(3,fP3);
   fit->SetLineWidth(2);
   fit->SetLineColor(kBlue);
   cout << "*********************************************************"<<endl;
@@ -363,7 +363,7 @@ void makePlots()
   performFit("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass", 43, xbins,
              4976, 890, 4200, "M_{jj}>890 GeV, CSVL 0Tag", "DijetMass_fit_CSVL_0Tag_WideJets.png", 1.51777e-04, 9.70316e+00, 4.57886e+00, -1.14765e-01);
-  
+
   performFit_diag("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass", 43, xbins,
                   4976, 890, 4200, "M_{jj}>890 GeV, CSVL 0Tag", "DijetMass_fit_diag_CSVL_0Tag_WideJets.png", 9.774, 4.074, 1.734, -0.001285);
@@ -399,15 +399,15 @@ void makePlots()
 //   // CSVM 0Tag
 //   performFit("CRAB_Jobs_MainAnalysis_CSVM_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //              "DATA__cutHisto_allPreviousCuts________DijetMass", 43, xbins,
-//              4976, 890, 4200, "M_{jj}>890 GeV, CSVM 0Tag", "DijetMass_fit_CSVM_0Tag_WideJets.png", 1e-03, 1e+01, 5e+00, 1e-01);
+//              4976, 890, 4200, "M_{jj}>890 GeV, CSVM 0Tag", "DijetMass_fit_CSVM_0Tag_WideJets.png", 2.76841e-04, 9.93281e+00, 4.28966e+00, -1.70391e-01);
 //   // CSVM 1Tag
 //   performFit("CRAB_Jobs_MainAnalysis_CSVM_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //              "DATA__cutHisto_allPreviousCuts________DijetMass", 43, xbins,
-//              4976, 890, 4000, "M_{jj}>890 GeV, CSVM 1Tag", "DijetMass_fit_CSVM_1Tag_WideJets.png", 1e-03, 1e+01, 5e+00, 1e-01);
+//              4976, 890, 4000, "M_{jj}>890 GeV, CSVM 1Tag", "DijetMass_fit_CSVM_1Tag_WideJets.png", 4.22853e-06, 7.43758e+00, 5.62396e+00, 6.27649e-02);
 //   // CSVM 2Tag
 //   performFit("CRAB_Jobs_MainAnalysis_CSVM_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //              "DATA__cutHisto_allPreviousCuts________DijetMass", 43, xbins,
-//              4976, 890, 4000, "M_{jj}>890 GeV, CSVM 2Tag", "DijetMass_fit_CSVM_2Tag_WideJets.png", 1e-03, 1e+01, 5e+00, 0);
+//              4976, 890, 4000, "M_{jj}>890 GeV, CSVM 2Tag", "DijetMass_fit_CSVM_2Tag_WideJets.png", 8.42408e-07, 1.07030e+01, 4.87934e+00, 0);
 
 //   // Draw fit
 //   //CSVM 0Tag

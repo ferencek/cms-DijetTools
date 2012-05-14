@@ -16,6 +16,8 @@ void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& 
 {
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
+  //gStyle->SetOptTitle(1);
+  gStyle->SetTitleFont(42, "t");
   gStyle->SetOptStat(kFALSE);
   gStyle->SetLabelSize(0.035, "XYZ");
   gStyle->SetPaintTextFormat("1.2g");
@@ -23,7 +25,7 @@ void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& 
   gStyle->SetPadTopMargin(0.08);
   gStyle->SetPadBottomMargin(0.12);
   gStyle->SetPadLeftMargin(0.12);
-  gStyle->SetPadRightMargin(0.08);
+  gStyle->SetPadRightMargin(0.10);
   gROOT->ForceStyle();
 
   map<Int_t,string> algoMap;
@@ -54,13 +56,13 @@ void bTaggingOptimization_2Tag_15x15(const string& fDijetMassBin, const string& 
   h2_QCD_mistag->SetTitle(("Mistag rate -- QCD, " + fBinLabel).c_str());
   h2_QCD_mistag->Divide(h2_QCD_mistag_num,h2_QCD_mistag_denom);
 
-  h2_QCD_eff->SetTitle(("Efficiency -- QCD, " + fBinLabel).c_str());
+  h2_QCD_eff->SetTitle(("#epsilon_{QCD} -- " + fBinLabel).c_str());
   h2_QCD_eff->Divide(h2_QCD_eff_num,h2_QCD_eff_denom);
 
-  h2_RSGravitonToBBbar_eff->SetTitle(("Efficiency -- RSG#rightarrowb#bar{b}, " + fBinLabel).c_str());
+  h2_RSGravitonToBBbar_eff->SetTitle(("#epsilon_{G#rightarrowb#bar{b}} -- " + fBinLabel).c_str());
   h2_RSGravitonToBBbar_eff->Divide(h2_RSGravitonToBBbar_eff_num,h2_RSGravitonToBBbar_eff_denom);
 
-  h2_RSGravitonToGG_eff->SetTitle(("Efficiency -- RSG#rightarrowgg, " + fBinLabel).c_str());
+  h2_RSGravitonToGG_eff->SetTitle(("#epsilon_{G#rightarrowgg} -- " + fBinLabel).c_str());
   h2_RSGravitonToGG_eff->Divide(h2_RSGravitonToGG_eff_num,h2_RSGravitonToGG_eff_denom);
 
   TCanvas *c = new TCanvas("c", "",1000,1000);

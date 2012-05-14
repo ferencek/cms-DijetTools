@@ -23,21 +23,17 @@
 
 using namespace std;
 
-// CSVL 0- and 2-tag efficienies for bbbar, qqbar (q=u,d,s), and gg final states
+// CSVL 0- and 2-tag efficienies and efficieny erros for heavy and light flavor final states
 double masses_eff[5] = {500.0, 700.0, 1200.0, 2000.0, 3500.0};
-double eff0_bb[5] = {0.075190481730750422, 0.092189096135135151, 0.17201223401970492, 0.32047805349296232, 0.44234154305258216};
-double eff2_bb[5] = {0.52785268605907942, 0.48045368192262933, 0.334041805776981, 0.18690492564265077, 0.11826979776906879};
-double eff0_qq[5] = {0.78351594923269763, 0.77540241038240232, 0.75544065496584467, 0.7016900412398327, 0.61564715158264538};
-double eff2_qq[5] = {0.014503055581162171, 0.012011188109140506, 0.016476316213718391, 0.027423668771216252, 0.047029415910807629};
-double eff0_gg[5] = {0.81050087626813849, 0.80443900768867393, 0.77680495432849128, 0.72843966223054046, 0.6035969683427731};
-double eff2_gg[5] = {0.010353188009586008, 0.011398250338602192, 0.01374299357801673, 0.022016876867683742, 0.052998874536699866};
+double eff0_h[5] = {0.075190481730750422, 0.092189096135135151, 0.17201223401970492, 0.32047805349296232, 0.44234154305258216};
+double eff2_h[5] = {0.52785268605907942, 0.48045368192262933, 0.334041805776981, 0.18690492564265077, 0.11826979776906879};
+double eff0_l[5] = {0.7975218492033489, 0.7907476660899039, 0.7660975206782392, 0.7202049472961713, 0.623953840878057};
+double eff2_l[5] = {0.012362415206298268, 0.011480309330892644, 0.015051930138445458, 0.022660032461222446, 0.04306123992381192};
 
-TGraph *g_eff0_bb = new TGraph(5, masses_eff,eff0_bb);
-TGraph *g_eff2_bb = new TGraph(5, masses_eff,eff2_bb);
-TGraph *g_eff0_qq = new TGraph(5, masses_eff,eff0_qq);
-TGraph *g_eff2_qq = new TGraph(5, masses_eff,eff2_qq);
-TGraph *g_eff0_gg = new TGraph(5, masses_eff,eff0_gg);
-TGraph *g_eff2_gg = new TGraph(5, masses_eff,eff2_gg);
+TGraph *g_eff0_h = new TGraph(5, masses_eff, eff0_h);
+TGraph *g_eff2_h = new TGraph(5, masses_eff, eff2_h);
+TGraph *g_eff0_l = new TGraph(5, masses_eff, eff0_l);
+TGraph *g_eff2_l = new TGraph(5, masses_eff, eff2_l);
 
 
 // QCD fit function -- alternate 4 parameter fit function -- also used for QCD fit.
@@ -76,14 +72,16 @@ void performFit(const string& fInputFile, const string& fPlot,
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
   gStyle->SetOptStat(kFALSE);
-//   gStyle->SetPadTopMargin(0.04);
-//   gStyle->SetPadBottomMargin(0.16);
-//   gStyle->SetPadLeftMargin(0.15);
-//   gStyle->SetPadRightMargin(0.05);
   gStyle->SetStatH(0.2);
   gStyle->SetStatW(0.2);
-  gStyle->SetStatX(0.94);
-  gStyle->SetStatY(0.94);
+  gStyle->SetStatX(0.97);
+  gStyle->SetStatY(0.97);
+  gStyle->SetStatH(0);  // uncomment for PAS
+  gStyle->SetStatW(0);  // uncomment for PAS
+  gStyle->SetPadTopMargin(0.05);
+  gStyle->SetPadBottomMargin(0.13);
+  gStyle->SetPadLeftMargin(0.16);
+  gStyle->SetPadRightMargin(0.02);
   gROOT->ForceStyle();
 
 //   cout << "Default number of iterations: " << TVirtualFitter::GetMaxIterations() << endl;
@@ -100,14 +98,15 @@ void performFit(const string& fInputFile, const string& fPlot,
   double a = 0.3173/2;
   double vx[1000],vy[1000],vexl[1000],vexh[1000],veyl[1000],veyh[1000];
   
-  int bins_to_skip = 0;
+//   int bins_to_skip = 0;
+//   
+//   for(int i=h1_plot_r->GetNbinsX(); i>0; --i)
+//   {
+//       if( h1_plot_r->GetBinContent(i)!=0. ) break;
+//       ++bins_to_skip;
+//   }
   
-  for(int i=h1_plot_r->GetNbinsX(); i>0; --i)
-  {
-      if( h1_plot_r->GetBinContent(i)!=0. ) break;
-      ++bins_to_skip;
-  }
-
+  int bins_to_skip = 10; // to have the same ndof in all three b-tag multiplicity bins
   int bins_to_process = (h1_plot_r->GetNbinsX()-bins_to_skip);
   
   for(int i=0; i<bins_to_process; ++i)
@@ -192,7 +191,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   p_1->SetRightMargin(0.03);
   p_1->SetTopMargin(0.03);
 
-  TH1F *vFrame = p_1->DrawFrame(700.0,2e-07,4337.0,10.0);
+  TH1F *vFrame = p_1->DrawFrame(700.0,1.1e-07,4337.0,10.0);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
   vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
@@ -200,12 +199,12 @@ void performFit(const string& fInputFile, const string& fPlot,
 
   g->Draw("P");
  
-  TLegend *legend = new TLegend(.3,.73,.5,.88);
+  TLegend *legend = new TLegend(.4,.7,.6,.85);
   legend->SetBorderSize(0);
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
   legend->SetTextFont(42);
-  legend->SetTextSize(0.04);
+  legend->SetTextSize(0.05);
   legend->AddEntry(g, "Data","lp");
   legend->AddEntry(fit, "Fit","l");
   legend->Draw();
@@ -243,38 +242,38 @@ void performFit(const string& fInputFile, const string& fPlot,
   // calculate b-tag efficiencies
   double eff_h_rsg1, eff_l_rsg1, eff_h_rsg2, eff_l_rsg2, eff_h_zprime1, eff_l_zprime1, eff_h_zprime2, eff_l_zprime2 = 0.;
   
-  if( fLabel.find("0-tag")!=string::npos )
+  if( fLabel.find("0 b-tags")!=string::npos )
   {
-    eff_h_rsg1 = g_eff0_bb->Eval(rsg1);
-    eff_l_rsg1 = 0.5*(g_eff0_qq->Eval(rsg1) + g_eff0_gg->Eval(rsg1));
-    eff_h_rsg2 = g_eff0_bb->Eval(rsg2);
-    eff_l_rsg2 = 0.5*(g_eff0_qq->Eval(rsg2) + g_eff0_gg->Eval(rsg2));
-    eff_h_zprime1 = g_eff0_bb->Eval(zprime1);
-    eff_l_zprime1 = 0.5*(g_eff0_qq->Eval(zprime1) + g_eff0_gg->Eval(zprime1));
-    eff_h_zprime2 = g_eff0_bb->Eval(zprime2);
-    eff_l_zprime2 = 0.5*(g_eff0_qq->Eval(zprime2) + g_eff0_gg->Eval(zprime2));
+    eff_h_rsg1 = g_eff0_h->Eval(rsg1);
+    eff_l_rsg1 = g_eff0_l->Eval(rsg1);
+    eff_h_rsg2 = g_eff0_h->Eval(rsg2);
+    eff_l_rsg2 = g_eff0_l->Eval(rsg2);
+    eff_h_zprime1 = g_eff0_h->Eval(zprime1);
+    eff_l_zprime1 = g_eff0_l->Eval(zprime1);
+    eff_h_zprime2 = g_eff0_h->Eval(zprime2);
+    eff_l_zprime2 = g_eff0_l->Eval(zprime2);
   }
-  else if( fLabel.find("1-tag")!=string::npos )
+  else if( fLabel.find("1 b-tag")!=string::npos )
   {
-    eff_h_rsg1 = 1- g_eff0_bb->Eval(rsg1) - g_eff2_bb->Eval(rsg1);
-    eff_l_rsg1 = 1 - 0.5*(g_eff0_qq->Eval(rsg1) + g_eff0_gg->Eval(rsg1)) - 0.5*(g_eff2_qq->Eval(rsg1) + g_eff2_gg->Eval(rsg1));
-    eff_h_rsg2 = 1- g_eff0_bb->Eval(rsg2) - g_eff2_bb->Eval(rsg2);
-    eff_l_rsg2 = 1 - 0.5*(g_eff0_qq->Eval(rsg2) + g_eff0_gg->Eval(rsg2)) - 0.5*(g_eff2_qq->Eval(rsg2) + g_eff2_gg->Eval(rsg2));
-    eff_h_zprime1 = 1- g_eff0_bb->Eval(zprime1) - g_eff2_bb->Eval(zprime1);
-    eff_l_zprime1 = 1 - 0.5*(g_eff0_qq->Eval(zprime1) + g_eff0_gg->Eval(zprime1)) - 0.5*(g_eff2_qq->Eval(zprime1) + g_eff2_gg->Eval(zprime1));
-    eff_h_zprime2 = 1- g_eff0_bb->Eval(zprime2) - g_eff2_bb->Eval(zprime2);
-    eff_l_zprime2 = 1 - 0.5*(g_eff0_qq->Eval(zprime2) + g_eff0_gg->Eval(zprime2)) - 0.5*(g_eff2_qq->Eval(zprime2) + g_eff2_gg->Eval(zprime2));
+    eff_h_rsg1 = 1 - g_eff0_h->Eval(rsg1) - g_eff2_h->Eval(rsg1);
+    eff_l_rsg1 = 1 - g_eff0_l->Eval(rsg1) - g_eff2_l->Eval(rsg1);
+    eff_h_rsg2 = 1 - g_eff0_h->Eval(rsg2) - g_eff2_h->Eval(rsg2);
+    eff_l_rsg2 = 1 - g_eff0_l->Eval(rsg2) - g_eff2_l->Eval(rsg2);
+    eff_h_zprime1 = 1 - g_eff0_h->Eval(zprime1) - g_eff2_h->Eval(zprime1);
+    eff_l_zprime1 = 1 - g_eff0_l->Eval(zprime1) - g_eff2_l->Eval(zprime1);
+    eff_h_zprime2 = 1 - g_eff0_h->Eval(zprime2) - g_eff2_h->Eval(zprime2);
+    eff_l_zprime2 = 1 - g_eff0_l->Eval(zprime2) - g_eff2_l->Eval(zprime2);
   }
   else
   {
-    eff_h_rsg1 = g_eff2_bb->Eval(rsg1);
-    eff_l_rsg1 = 0.5*(g_eff2_qq->Eval(rsg1) + g_eff2_gg->Eval(rsg1));
-    eff_h_rsg2 = g_eff2_bb->Eval(rsg2);
-    eff_l_rsg2 = 0.5*(g_eff2_qq->Eval(rsg2) + g_eff2_gg->Eval(rsg2));
-    eff_h_zprime1 = g_eff2_bb->Eval(zprime1);
-    eff_l_zprime1 = 0.5*(g_eff2_qq->Eval(zprime1) + g_eff2_gg->Eval(zprime1));
-    eff_h_zprime2 = g_eff2_bb->Eval(zprime2);
-    eff_l_zprime2 = 0.5*(g_eff2_qq->Eval(zprime2) + g_eff2_gg->Eval(zprime2));
+    eff_h_rsg1 = g_eff2_h->Eval(rsg1);
+    eff_l_rsg1 = g_eff2_l->Eval(rsg1);
+    eff_h_rsg2 = g_eff2_h->Eval(rsg2);
+    eff_l_rsg2 = g_eff2_l->Eval(rsg2);
+    eff_h_zprime1 = g_eff2_h->Eval(zprime1);
+    eff_l_zprime1 = g_eff2_l->Eval(zprime1);
+    eff_h_zprime2 = g_eff2_h->Eval(zprime2);
+    eff_l_zprime2 = g_eff2_l->Eval(zprime2);
   }
 
   std::vector<double> v_rsg1, v_rsg1_m, v_rsg2, v_rsg2_m, v_zprime1, v_zprime1_m, v_zprime2, v_zprime2_m;
@@ -397,18 +396,18 @@ void performFit(const string& fInputFile, const string& fPlot,
   l1.SetTextFont(42);
   l1.SetNDC();
   l1.SetTextSize(0.04);
-  l1.DrawLatex(0.66,0.55, "CMS Preliminary");
-  l1.DrawLatex(0.66,0.47, "#intLdt = 5 fb^{-1}");
-  l1.DrawLatex(0.67,0.42, "#sqrt{s} = 7 TeV");
-  l1.DrawLatex(0.66,0.37, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  l1.DrawLatex(0.66,0.32, ("Wide Jets"+ fLabel).c_str());
+  l1.DrawLatex(0.70,0.55, "CMS Preliminary");
+  l1.DrawLatex(0.70,0.47, "#intLdt = 5 fb^{-1}");
+  l1.DrawLatex(0.71,0.42, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.70,0.37, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.70,0.32, "Wide Jets");
   l1.SetTextColor(kGreen+2);
-  if( fLabel.find("0-tag")!=string::npos )
+  if( fLabel.find("0 b-tags")!=string::npos )
   {
     l1.DrawLatex(0.20,0.42, "G (1.4 TeV)");
     l1.DrawLatex(0.35,0.26, "G (2 TeV)");
   }
-  else if( fLabel.find("1-tag")!=string::npos )
+  else if( fLabel.find("1 b-tag")!=string::npos )
   {
     l1.DrawLatex(0.20,0.36, "G (1.4 TeV)");
     l1.DrawLatex(0.35,0.21, "G (2 TeV)");
@@ -419,12 +418,12 @@ void performFit(const string& fInputFile, const string& fPlot,
     l1.DrawLatex(0.35,0.10, "G (2 TeV)");
   }
   l1.SetTextColor(kRed);
-  if( fLabel.find("0-tag")!=string::npos )
+  if( fLabel.find("0 b-tags")!=string::npos )
   {
     l1.DrawLatex(0.35,0.37, "Z' (1.7 TeV)");
     l1.DrawLatex(0.50,0.23, "Z' (2.4 TeV)");
   }
-  else if( fLabel.find("1-tag")!=string::npos )
+  else if( fLabel.find("1 b-tag")!=string::npos )
   {
     l1.DrawLatex(0.35,0.33, "Z' (1.7 TeV)");
     l1.DrawLatex(0.50,0.19, "Z' (1.7 TeV)");
@@ -434,6 +433,9 @@ void performFit(const string& fInputFile, const string& fPlot,
     l1.DrawLatex(0.35,0.24, "Z' (1.7 TeV)");
     l1.DrawLatex(0.50,0.09, "Z' (1.7 TeV)");
   }
+  l1.SetTextColor(kBlack);
+  l1.SetTextSize(0.06);
+  l1.DrawLatex(0.17,0.89, fLabel.c_str());
   
   // End top part
   
@@ -449,7 +451,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   TH1F *vFrame2 = p_2->DrawFrame(700.0, -3.3, 4337.0, 3.3);
   vFrame2->SetTitle("");
   vFrame2->GetXaxis()->SetTitle("Dijet Mass [GeV]");
-  vFrame2->GetYaxis()->SetTitle("Significance");
+  vFrame2->GetYaxis()->SetTitle("(Data-Fit)/Error");
   vFrame2->GetYaxis()->SetTitleSize(0.12);
   vFrame2->GetYaxis()->SetLabelSize(0.10);
   vFrame2->GetYaxis()->SetTitleOffset(0.5);
@@ -481,25 +483,25 @@ void makePlots()
                       
   performFit("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
-             43, xbins, 4976, 890, 4200, ", CSVL 0-tag",
-             "DijetMass_fit_pulls_CSVL_0Tag_WideJets.eps", 4.51941e-05, 8.49600e+00, 5.43791e+00, 5.57960e-02);
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+             43, xbins, 4976, 890, 4200, "0 b-tags",
+             "DijetMass_fit_pulls_CSVL_0Tag_WideJets.eps", 4.51941e-05, 8.49600e+00, 5.43791e+00, 5.57959e-02);
 
   performFit("CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
-             43, xbins, 4976, 890, 3779, ", CSVL 1-tag",
-             "DijetMass_fit_pulls_CSVL_1Tag_WideJets.eps", 1.31986e-05, 7.72035e+00, 5.52439e+00, 7.43260e-02);
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+             43, xbins, 4976, 890, 4200, "1 b-tag",
+             "DijetMass_fit_pulls_CSVL_1Tag_WideJets.eps", 1.47135e-05, 7.82687e+00, 5.44665e+00, 5.87473e-02);
 
   performFit("CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_bb.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_qq.root",
-             "Resonance_shape_files/ResonanceShapesCode/Resonance_Shapes_WideJets_gg.root",
-             43, xbins, 4976, 890, 3631, ", CSVL 2-tag",
-             "DijetMass_fit_pulls_CSVL_2Tag_WideJets.eps", 3.36304e-09, 1.07651e+00, 9.55802e+00, 8.50916e-01);
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+             "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+             43, xbins, 4976, 890, 4200, "2 b-tags",
+             "DijetMass_fit_pulls_CSVL_2Tag_WideJets.eps", 4.44868e-09, 1.34960e+00, 9.35736e+00, 8.10596e-01);
 }

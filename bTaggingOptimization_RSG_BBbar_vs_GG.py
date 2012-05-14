@@ -170,7 +170,7 @@ def plot_TCHEL_CSVL(xMax,yMax,fileName,linesAlgo=""):
 
   markerColor = {"TCHEL": [24, kRed],  "CSVL": [26, kGreen+2]}
 
-  legend = TLegend(.2,.4,.35,.55)
+  legend = TLegend(.2,.4,.45,.55)
   legend.SetBorderSize(0)
   legend.SetFillColor(0)
   legend.SetFillStyle(0)
@@ -205,7 +205,7 @@ def plot_TCHEL_CSVL(xMax,yMax,fileName,linesAlgo=""):
     algoGraphs[algo].SetLineWidth(2)
     algoGraphs[algo].SetLineColor(markerColor[algo][1])
     algoGraphs[algo].Draw("PLsame")
-    legend.AddEntry(algoGraphs[algo],algo + ", 2-tag","lp")
+    legend.AddEntry(algoGraphs[algo],algo + ", 2 b-tags","lp")
 
     if algo==linesAlgo:
       for i in range(0,len(dijetMassBins)):
@@ -224,4 +224,4 @@ if __name__ == "__main__":
   #plot_JP_CSV(0.6,0.23,"DoubleTag_eff_RSG_GG_vs_BBbar.png","CSVM")
   #plot_JP_CSV(0.36,0.045,"DoubleTag_eff_RSG_GG_vs_BBbar_zoomed.png")
 
-  plot_TCHEL_CSVL(0.75,0.85,"DoubleTag_eff_TCHEL_CSVL_RSG_GG_vs_BBbar.png")
+  plot_TCHEL_CSVL(0.75,0.85,"DoubleTag_eff_TCHEL_CSVL_RSG_GG_vs_BBbar.eps")

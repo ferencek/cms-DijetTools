@@ -4,6 +4,7 @@ import os
 from ROOT import *
 
 path_prefix = 'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets'
+#path_prefix = 'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets'
 
 histo_name_postfix = "bbbar"
 #histo_name_postfix = "ccbar"

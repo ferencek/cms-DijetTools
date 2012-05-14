@@ -80,7 +80,9 @@ void triggerEfficiency(const string& fInputFile, const string& hNum, const strin
   l1.DrawLatex(0.55,0.34, "CMS Preliminary");
   l1.DrawLatex(0.56,0.29, "#sqrt{s} = 7 TeV");
   l1.DrawLatex(0.55,0.24, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  l1.DrawLatex(0.55,0.19, ("Wide Jets" + fLabel).c_str());
+  l1.DrawLatex(0.55,0.19, "Wide Jets");
+  l1.SetTextSize(0.05);
+  l1.DrawLatex(0.20,0.19, fLabel.c_str());
     
 //   c->SetLogy();
   c->SaveAs(fOutputFile.c_str());
@@ -99,20 +101,20 @@ void makePlots()
   triggerEfficiency("CRAB_Jobs_TriggerEfficiency_CSVL_WideJets/Final__histograms.root",
                     "DATA__h1_DijetMass_num_HT650",
                     "DATA__h1_DijetMass_denom_HT650",
-                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency.png", "", 25, 650, 1150);
+                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency.eps", "", 25, 650, 1150);
 
   triggerEfficiency("CRAB_Jobs_TriggerEfficiency_CSVL_WideJets/Final__histograms.root",
                     "DATA__h1_DijetMass_num_HT650_0tag",
                     "DATA__h1_DijetMass_denom_HT650_0tag",
-                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_0Tag.png", ", CSVL 0-tag", 25, 650, 1150);
+                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_0Tag.eps", "0 b-tags", 25, 650, 1150);
 
   triggerEfficiency("CRAB_Jobs_TriggerEfficiency_CSVL_WideJets/Final__histograms.root",
                     "DATA__h1_DijetMass_num_HT650_1tag",
                     "DATA__h1_DijetMass_denom_HT650_1tag",
-                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_1Tag.png", ", CSVL 1-tag", 25, 650, 1150);
+                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_1Tag.eps", "1 b-tag", 25, 650, 1150);
 
   triggerEfficiency("CRAB_Jobs_TriggerEfficiency_CSVL_WideJets/Final__histograms.root",
                     "DATA__h1_DijetMass_num_HT650_2tag",
                     "DATA__h1_DijetMass_denom_HT650_2tag",
-                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_2Tag.png", ", CSVL 2-tag", 25, 650, 1150);
+                    "(HLT_HT650 AND HLT_HT400)/HLT_HT400", "HLT_HT650_efficiency_CSVL_2Tag.eps", "2 b-tags", 25, 650, 1150);
 }
