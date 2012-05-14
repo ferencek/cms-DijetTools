@@ -10,8 +10,8 @@
     2: 1.2=<|eta|<=2.5
 
   C: dijet mass bin
-    1: 944<=mass<1000 GeV
-    2: 1000<=mass<1200 GeV
+    1: 890<=mass<950 GeV
+    2: 950<=mass<1200 GeVV
     3: 1200<=mass<1800 GeV
     4: 1800<=mass<2500 GeV
     5: 2500<=mass<6000 GeV
@@ -34,15 +34,15 @@
 using namespace std;
 
 bool DEBUG=false;
-TFile *file_tchpt;
-TFile *file_ssvhpt;
+TFile *file_csvl;
+TFile *file_csvm;
 double MCnHtotal=0.;
 double MCnLtotal=0.;
 
 void INIT(void)
 {
-  file_tchpt=new TFile("CRAB_Jobs_MainAnalysis_TCHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
-  file_ssvhpt=new TFile("CRAB_Jobs_MainAnalysis_SSVHPT_1Tag_PUReweighted_bPartonMatching_EventBins/Final__histograms.root");
+  file_csvl=new TFile("CRAB_Jobs_MainAnalysis_CSVL_PUReweighted_PartonMatching_WideJets_EventBins/Final__histograms.root");
+  file_csvm=new TFile("CRAB_Jobs_MainAnalysis_CSVM_PUReweighted_PartonMatching_WideJets_EventBins/Final__histograms.root");
   return;
 }
 
@@ -74,15 +74,15 @@ Double_t getNumber(const string& fNumber, const Int_t fBin, const string& fBTagg
     assert(0);
   }
 
-  if(fBTagger!="TCHPT" && fBTagger!="SSVHPT")
+  if(fBTagger!="CSVL" && fBTagger!="CSVM")
   {
-    cout<<"Allowed b-taggers are TCHPT and SSVHPT."<<endl;
+    cout<<"Allowed b-taggers are CSVL and CSVM."<<endl;
     return -1;
   }
   
   TFile* file=0;
-  if(fBTagger=="TCHPT") file=file_tchpt;
-  else if(fBTagger=="SSVHPT") file=file_ssvhpt;
+  if(fBTagger=="CSVL") file=file_csvl;
+  else if(fBTagger=="CSVM") file=file_csvm;
   file->cd();
 
   string muString, etaString;
@@ -97,7 +97,7 @@ Double_t getNumber(const string& fNumber, const Int_t fBin, const string& fBTagg
   
   TH2D *h2 = (TH2D*)file->Get(histoName.c_str());
 
-  Int_t binsX[] = {944, 1000, 1200, 1800, 2500, 6000};
+  Int_t binsX[] = {890, 950, 1200, 1800, 2500, 6000};
 //   Int_t binsX[] = {944, 980, 1500, 2000, 2500, 6000};
   Int_t binsY[] = {0,6,9,41};
   
@@ -196,53 +196,53 @@ void fcn(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
   double SFl2=par[3];
   double K=par[4];
   double muSF=par[5];
-  f=nll("TCHPT", SFh1, SFl1, K, muSF)+nll("SSVHPT", SFh2, SFl2, K, muSF);
+  f=nll("CSVL", SFh1, SFl1, K, muSF)+nll("CSVM", SFh2, SFl2, K, muSF);
   return;
 }
 
-void fcn_TCOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
+void fcn_CSVLOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 {
   double SFh1=par[0];
   double SFl1=par[1];
   double K=par[4];
   double muSF=par[5];
-  f=nll("TCHPT", SFh1, SFl1, K, muSF);
+  f=nll("CSVL", SFh1, SFl1, K, muSF);
   return;
 }
 
-void fcn_SSVOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
+void fcn_CSVMOnly(Int_t &, Double_t *, Double_t &f, Double_t *par, Int_t)
 {
   double SFh2=par[2];
   double SFl2=par[3];
   double K=par[4];
   double muSF=par[5];
-  f=nll("SSVHPT", SFh2, SFl2, K, muSF);
+  f=nll("CSVM", SFh2, SFl2, K, muSF);
   return;
 }
 
 void minimize(void)
 {
   INIT();
-  INIT_HFFraction("TCHPT"); // here it does not matter which b-tagger is used (it can be either "SSVHPT" or "TCHPT")
+  INIT_HFFraction("CSVL"); // here it does not matter which b-tagger is used (it can be either "CSVM" or "CSVL")
 
   cout << "MCnTotal=" << (MCnLtotal+MCnHtotal) << endl;
   cout << "HF fraction=" << (MCnHtotal/(MCnLtotal+MCnHtotal)) << endl;
   
   // make some parameter choices
   //  muSF=0.9; // muon SF
-  int whichTagger=0; // 0 = combined, 1=TC only, 2=SSV only
+  int whichTagger=1; // 0 = combined, 1=CSVL only, 2=CSVM only
   int printlevel=2; // -1 = suppressed, 0 = normal, 1 = verbose
   bool fixMuSF=true; // fix the SF to unity
 
   TMinuit t;
   t.SetPrintLevel(printlevel);
   if(whichTagger==0) t.SetFCN(fcn);
-  if(whichTagger==1) t.SetFCN(fcn_TCOnly);
-  if(whichTagger==2) t.SetFCN(fcn_SSVOnly);
-  t.DefineParameter(0, "TCHPT SFh", 1.0, 0.1, 0.0, 2.0);
-  t.DefineParameter(1, "TCHPT SFl", 1.0, 0.1, 0.0, 2.0);
-  t.DefineParameter(2, "SSVHPT SFh", 1.0, 0.1, 0.0, 2.0);
-  t.DefineParameter(3, "SSVHPT SFl", 1.0, 0.1, 0.0, 2.0);
+  if(whichTagger==1) t.SetFCN(fcn_CSVLOnly);
+  if(whichTagger==2) t.SetFCN(fcn_CSVMOnly);
+  t.DefineParameter(0, "CSVL SFh", 1.0, 0.1, 0.0, 2.0);
+  t.DefineParameter(1, "CSVL SFl", 1.0, 0.1, 0.0, 2.0);
+  t.DefineParameter(2, "CSVM SFh", 1.0, 0.1, 0.0, 2.0);
+  t.DefineParameter(3, "CSVM SFl", 1.0, 0.1, 0.0, 2.0);
   t.DefineParameter(4, "HF K factor", 1.0, 0.1, 0.0, 5.0);
   t.DefineParameter(5, "muon SF", 1.0, 0.1, 0.0, 2.0);
   
