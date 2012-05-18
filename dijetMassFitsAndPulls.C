@@ -8,6 +8,7 @@
 #include "TString.h"
 #include "TMinuit.h"
 #include "TVirtualFitter.h"
+#include "TFitResult.h"
 #include "TLatex.h"
 #include "TLegend.h"
 #include "TGraphAsymmErrors.h"
@@ -40,14 +41,14 @@ Double_t fitQCD( Double_t *m, Double_t *p)
 }
 
 // Alternate fit function A (4 parameter fit function)
-Double_t fitQCD_AltA( Double_t *m, Double_t *p)
+Double_t fitQCD_A( Double_t *m, Double_t *p)
 {
   double x=m[0]/7000.;
-  return p[0]*pow(1.-x+p[3]*x*x,p[1])/pow(m[0],p[2]);
+  return p[0]*pow(1.-x+p[3]*x*x,p[1])/pow(x,p[2]);
 }
 
 // Alternate fit function B (3 parameter fit function)
-Double_t fitQCD_AltB( Double_t *m, Double_t *p)
+Double_t fitQCD_B( Double_t *m, Double_t *p)
 {
   double x=m[0]/7000.;
   return p[0]*pow(1.-x,p[1])/pow(x,p[2]);
@@ -136,8 +137,9 @@ void performFit(const string& fInputFile, const string& fPlot,
 //   fit->FixParameter(3,0);
   fit->SetLineWidth(2);
   fit->SetLineColor(kBlue);
-  g->Fit("fit","R");
-  
+
+  cout << "*********************************************************"<<endl;
+  TFitResultPtr s = g->Fit("fit","SR");
   TString status_default = gMinuit->fCstatu.Data();
   // Results of the fit
   cout << "*********************************************************"<<endl;
@@ -147,6 +149,9 @@ void performFit(const string& fInputFile, const string& fPlot,
   cout << "Status: "<<status_default<<endl;
   cout << "*********************************************************"<<endl;
 
+  // Print fit results
+  s->Print("V");
+  
   for(int i=0; i<bins_to_process; ++i)
     {
       double data = vy[i];
