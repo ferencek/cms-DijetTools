@@ -15,13 +15,13 @@
 
 using namespace std;
 
-Double_t fitQCD1(Double_t *m, Double_t *p)
+Double_t fitQCD(Double_t *m, Double_t *p)
 {
     double x=m[0]/7000.;
     return p[0]*pow(1.-x,p[1])/pow(x,p[2]+p[3]*log(x));
 }
 
-Double_t fitQCD1_diag(Double_t *m, Double_t *p)
+Double_t fitQCD_diag(Double_t *m, Double_t *p)
 {
     double data[] = {
 //         -0.507488, -0.508077,  0.350645,  0.601134,
@@ -93,7 +93,7 @@ void performFit(const string& fInputFile, const string& fPlot, const Int_t fNbin
   h1_plot_diff->SetTitleOffset(1.4,"Y");
 
   // Fit to data
-  TF1 *fit = new TF1("fit",fitQCD1,fFitXmin,fFitXmax,4); // 4 Par. Fit
+  TF1 *fit = new TF1("fit",fitQCD,fFitXmin,fFitXmax,4); // 4 Par. Fit
 //   gStyle->SetOptFit(1111);
   fit->SetParameter(0,fP0);
   fit->SetParameter(1,fP1);
