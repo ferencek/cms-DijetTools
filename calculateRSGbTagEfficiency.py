@@ -357,44 +357,148 @@ def eff_syst(inputDirs, final_state, title, outputFilename, pos = 0.80):
 
   
 if __name__ == "__main__":
- 
+
+  ## CSVL
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, CSVL', 'RSGToBBbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'ccbar', 'G#rightarrowc#bar{c}, CSVL', 'RSGToCCbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s), CSVL', 'RSGToQQbarLight_bTagEfficiency_CSVL_PUSFReweighted.png')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets', 'gg', 'G#rightarrowgg, CSVL', 'RSGToGG_bTagEfficiency_CSVL_PUSFReweighted.png')
 
+  ## CSVM
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, CSVM', 'RSGToBBbar_bTagEfficiency_CSVM_PUSFReweighted.eps')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets', 'ccbar', 'G#rightarrowc#bar{c}, CSVM', 'RSGToCCbar_bTagEfficiency_CSVM_PUSFReweighted.eps')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets', 'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s), CSVM', 'RSGToQQbarLight_bTagEfficiency_CSVM_PUSFReweighted.eps')
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets', 'gg', 'G#rightarrowgg, CSVM', 'RSGToGG_bTagEfficiency_CSVM_PUSFReweighted.eps')
-  
-  # efficiency plots with systematic uncertainty bands
-  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
-           'bbbar', 'G#rightarrowb#bar{b}', 'RSGToBBbar_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
-  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
-           'ccbar', 'G#rightarrowc#bar{c}', 'RSGToCCbar_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
-  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
-           'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s)', 'RSGToQQbarLight_bTagEfficiency_CSVL_PUSFReweighted_syst.eps',0.6)
-  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFbDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFbUp',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFlDown',
-            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFlUp'],
-           'gg', 'G#rightarrowgg', 'RSGToGG_bTagEfficiency_CSVL_PUSFReweighted_syst.eps',0.6)
 
+  ## TCHEL
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_TCHEL_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, TCHEL', 'RSGToBBbar_bTagEfficiency_TCHEL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_TCHEL_PUSFReweighted_WideJets', 'ccbar', 'G#rightarrowc#bar{c}, TCHEL', 'RSGToCCbar_bTagEfficiency_TCHEL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_TCHEL_PUSFReweighted_WideJets', 'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s), TCHEL', 'RSGToQQbarLight_bTagEfficiency_TCHEL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_TCHEL_PUSFReweighted_ggInitialState_WideJets', 'gg', 'G#rightarrowgg, TCHEL', 'RSGToGG_bTagEfficiency_TCHEL_PUSFReweighted.eps')
+  
+  ## CSVL
+  ## efficiency plots with systematic uncertainty bands
+  #eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
+           #'bbbar', 'G#rightarrowb#bar{b}', 'RSGToBBbar_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
+  #eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
+           #'ccbar', 'G#rightarrowc#bar{c}', 'RSGToCCbar_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
+  #eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFbUp',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets_SFlUp'],
+           #'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s)', 'RSGToQQbarLight_bTagEfficiency_CSVL_PUSFReweighted_syst.eps',0.6)
+  #eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFbDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFbUp',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFlDown',
+            #'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets_SFlUp'],
+           #'gg', 'G#rightarrowgg', 'RSGToGG_bTagEfficiency_CSVL_PUSFReweighted_syst.eps',0.6)
            
+  #c = TCanvas("c", "",800,800)
+  #c.cd()
+
+  ##graph_eff0_array[2].SetTitle('RSG, CSVL')
+  #graph_eff0_array[2].Draw("APL")
+  #graph_eff0_syst_array[2].Draw("F")
+  #graph_eff1_array[2].Draw("PL")
+  #graph_eff1_syst_array[2].Draw("F")
+  #graph_eff2_array[2].Draw("PL")
+  #graph_eff2_syst_array[2].Draw("F")
+
+  #graph_eff0_array[3].SetLineColor(6)
+  #graph_eff0_array[3].SetFillColor(6)
+  #graph_eff0_array[3].SetMarkerColor(6)
+  #graph_eff0_syst_array[3].SetFillColor(6)
+  #graph_eff1_array[3].SetLineColor(kGreen+2)
+  #graph_eff1_array[3].SetFillColor(kGreen+2)
+  #graph_eff1_array[3].SetMarkerColor(kGreen+2)
+  #graph_eff1_syst_array[3].SetFillColor(kGreen+2)
+  #graph_eff1_syst_array[3].SetFillStyle(3005)
+  #graph_eff2_array[3].SetLineColor(kOrange+7)
+  #graph_eff2_array[3].SetFillColor(kOrange+7)
+  #graph_eff2_array[3].SetMarkerColor(kOrange+7)
+  #graph_eff2_syst_array[3].SetFillColor(kOrange+7)
+  #graph_eff2_syst_array[3].SetFillStyle(3004)
+  
+  #graph_eff0_array[3].Draw("PL")
+  #graph_eff0_syst_array[3].Draw("F")
+  #graph_eff1_array[3].Draw("PL")
+  #graph_eff1_syst_array[3].Draw("F")
+  #graph_eff2_array[3].Draw("PL")
+  #graph_eff2_syst_array[3].Draw("F")
+
+  #legend1 = TLegend(.18,.41,.48,.59)
+  #legend1.SetBorderSize(0)
+  #legend1.SetFillColor(0)
+  #legend1.SetFillStyle(0)
+  #legend1.SetTextFont(42)
+  #legend1.SetTextSize(0.03)
+  #legend1.SetHeader("G#rightarrowq#bar{q} (q=u,d,s)")
+  #legend1.AddEntry(graph_eff0_array[2],"0 b-tags","lfp")
+  #legend1.AddEntry(graph_eff1_array[2],"1 b-tag","lfp")
+  #legend1.AddEntry(graph_eff2_array[2],"2 b-tags","lfp")
+  #legend1.Draw()
+
+  #legend2 = TLegend(.5,.41,.8,.59)
+  #legend2.SetBorderSize(0)
+  #legend2.SetFillColor(0)
+  #legend2.SetFillStyle(0)
+  #legend2.SetTextFont(42)
+  #legend2.SetTextSize(0.03)
+  #legend2.SetHeader("G#rightarrowgg")
+  #legend2.AddEntry(graph_eff0_array[3],"0 b-tags","lfp")
+  #legend2.AddEntry(graph_eff1_array[3],"1 b-tag","lfp")
+  #legend2.AddEntry(graph_eff2_array[3],"2 b-tags","lfp")
+  #legend2.Draw()
+
+  #l1 = TLatex()
+  #l1.SetTextAlign(12)
+  #l1.SetTextFont(42)
+  #l1.SetNDC()
+  #l1.SetTextSize(0.04)
+  #l1.DrawLatex(0.60,0.88, "CMS Simulation")
+  #l1.DrawLatex(0.61,0.83, "#sqrt{s} = 7 TeV")
+  #l1.DrawLatex(0.60,0.78, "|#eta| < 2.5, |#Delta#eta| < 1.3")
+  #l1.DrawLatex(0.60,0.73, "Wide Jets")
+  
+  #c.SaveAs('RSGToGGandQQbarLight_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
+
+  # CSVM
+  # efficiency plots with systematic uncertainty bands
+  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbUp',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlUp'],
+           'bbbar', 'G#rightarrowb#bar{b}', 'RSGToBBbar_bTagEfficiency_CSVM_PUSFReweighted_syst.eps')
+  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbUp',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlUp'],
+           'ccbar', 'G#rightarrowc#bar{c}', 'RSGToCCbar_bTagEfficiency_CSVM_PUSFReweighted_syst.eps')
+  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFbUp',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets_SFlUp'],
+           'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s)', 'RSGToQQbarLight_bTagEfficiency_CSVM_PUSFReweighted_syst.eps',0.6)
+  eff_syst(['CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets_SFbDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets_SFbUp',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets_SFlDown',
+            'CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets_SFlUp'],
+           'gg', 'G#rightarrowgg', 'RSGToGG_bTagEfficiency_CSVM_PUSFReweighted_syst.eps',0.6)
+
   c = TCanvas("c", "",800,800)
   c.cd()
 
@@ -420,7 +524,7 @@ if __name__ == "__main__":
   graph_eff2_array[3].SetMarkerColor(kOrange+7)
   graph_eff2_syst_array[3].SetFillColor(kOrange+7)
   graph_eff2_syst_array[3].SetFillStyle(3004)
-  
+
   graph_eff0_array[3].Draw("PL")
   graph_eff0_syst_array[3].Draw("F")
   graph_eff1_array[3].Draw("PL")
@@ -457,9 +561,9 @@ if __name__ == "__main__":
   l1.SetTextFont(42)
   l1.SetNDC()
   l1.SetTextSize(0.04)
-  l1.DrawLatex(0.60,0.88, "CMS Simulation")
-  l1.DrawLatex(0.61,0.83, "#sqrt{s} = 7 TeV")
-  l1.DrawLatex(0.60,0.78, "|#eta| < 2.5, |#Delta#eta| < 1.3")
-  l1.DrawLatex(0.60,0.73, "Wide Jets")
-  
-  c.SaveAs('RSGToGGandQQbarLight_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
+  l1.DrawLatex(0.18,0.81, "CMS Simulation")
+  l1.DrawLatex(0.19,0.76, "#sqrt{s} = 7 TeV")
+  l1.DrawLatex(0.18,0.71, "|#eta| < 2.5, |#Delta#eta| < 1.3")
+  l1.DrawLatex(0.18,0.66, "Wide Jets")
+
+  c.SaveAs('RSGToGGandQQbarLight_bTagEfficiency_CSVM_PUSFReweighted_syst.eps')
