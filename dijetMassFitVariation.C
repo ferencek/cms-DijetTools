@@ -13,6 +13,7 @@
 #include "TLatex.h"
 #include "TLegend.h"
 #include "TGraph.h"
+#include "TGraphAsymmErrors.h"
 #include "TMath.h"
 #include "TLine.h"
 #include "TPolyLine.h"
@@ -47,7 +48,8 @@ Double_t fitQCD_B( Double_t *m, Double_t *p)
 }
 
 
-void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmin, const Double_t fFitXmax)
+void drawFits(const string& fInputFile0, const string& fPlot0, const string& fInputFile1, const string& fPlot1, const string& fInputFile2, const string& fPlot2,
+              const Int_t fNbins, const Double_t *fBins, const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmin, const Double_t fFitXmax)
 {
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
@@ -72,6 +74,18 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   Double_t stop[]  = {0., 0.25, .50, 0.75, 1.0};
   Int_t FI = TColor::CreateGradientColorTable(5, stop, red, green, blue, 31);
   for (int i=0; i<31; ++i) MyPalette[i] = FI+i;
+
+  TFile *file0 = new TFile(fInputFile0.c_str());
+  TH1D *h1_plot0 = (TH1D*)file0->Get(fPlot0.c_str());
+  TH1D *h1_plot0_r = (TH1D*)h1_plot0->Rebin(fNbins,"h1_plot_r",fBins);
+
+  TFile *file1 = new TFile(fInputFile1.c_str());
+  TH1D *h1_plot1 = (TH1D*)file1->Get(fPlot1.c_str());
+  TH1D *h1_plot1_r = (TH1D*)h1_plot1->Rebin(fNbins,"h1_plot_r",fBins);
+
+  TFile *file2 = new TFile(fInputFile2.c_str());
+  TH1D *h1_plot2 = (TH1D*)file2->Get(fPlot2.c_str());
+  TH1D *h1_plot2_r = (TH1D*)h1_plot2->Rebin(fNbins,"h1_plot_r",fBins);
 
   double p0_0[] = {  3.51794e-01,  5.34627e-01,  2.27731e-01,  2.28260e-01,  2.28252e-01,  2.28216e-01,  2.28122e-01,  2.28341e-01,  2.28146e-01,  2.28178e-01, 1.85143e-01, 2.07922e-01,  2.32111e-01,  2.31017e-01,  2.92651e-01,  4.33266e-01,  4.57946e-01,  3.21107e-01,  2.28579e-01,  2.28465e-01,  2.28483e-01,  2.28414e-01,  2.28399e-01,  2.28395e-01,  2.28375e-01,  2.28368e-01,  2.28362e-01,  2.28356e-01,  2.28347e-01,  2.28325e-01,  2.28318e-01  };
   double p1_0[] = {  8.90758e+00,  9.26177e+00,  8.50514e+00,  8.51137e+00,  8.51139e+00,  8.51123e+00,  8.51046e+00,  8.51553e+00,  8.51073e+00,  8.51110e+00, 8.36396e+00, 8.49504e+00,  8.57168e+00,  8.55201e+00,  8.79841e+00,  9.20916e+00,  9.25090e+00,  8.86881e+00,  8.51261e+00,  8.51226e+00,  8.51299e+00,  8.51246e+00,  8.51231e+00,  8.51229e+00,  8.51203e+00,  8.51192e+00,  8.51186e+00,  8.51182e+00,  8.51177e+00,  8.51159e+00,  8.51162e+00  };
@@ -107,6 +121,51 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   fit_B_2Tag->FixParameter(2,5.58519e+00);
   fit_B_2Tag->FixParameter(3,4.94202e-02);
 
+  const double alpha = 1 - 0.6827;
+  double vx[1000],vexl[1000],vexh[1000],vy0[1000],veyl0[1000],veyh0[1000],vy1[1000],veyl1[1000],veyh1[1000],vy2[1000],veyl2[1000],veyh2[1000];
+
+  int bins_to_skip = 10; // to have the same ndof in all three b-tag multiplicity bins
+  int bins_to_process = (h1_plot0_r->GetNbinsX()-bins_to_skip);
+
+  for(int i=0; i<bins_to_process; ++i)
+  {
+      double n0   = h1_plot0_r->GetBinContent(i+1);
+      double n1   = h1_plot1_r->GetBinContent(i+1);
+      double n2   = h1_plot2_r->GetBinContent(i+1);
+      double dm   = h1_plot0_r->GetBinWidth(i+1);
+      double xl   = h1_plot0_r->GetBinLowEdge(i+1);
+      double xh   = xl+dm;
+      double mass = (xl+xh)/2.;
+      double fit0 = fit_B_0Tag->Integral(xl,xh)/dm;
+      double fit1 = fit_B_1Tag->Integral(xl,xh)/dm;
+      double fit2 = fit_B_2Tag->Integral(xl,xh)/dm;
+      vx[i]   = mass;
+      vexl[i] = dm/2.;
+      vexh[i] = dm/2.;
+      vy0[i]   = n0 / (dm*fLumi*fit0);
+      vy1[i]   = n1 / (dm*fLumi*fit1);
+      vy2[i]   = n2 / (dm*fLumi*fit2);
+
+      double l0 = 0.5*TMath::ChisquareQuantile(alpha/2,2*n0);
+      double h0 = (n0==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n0+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n0+1)) );
+      double l1 = 0.5*TMath::ChisquareQuantile(alpha/2,2*n1);
+      double h1 = (n1==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n1+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n1+1)) );
+      double l2 = 0.5*TMath::ChisquareQuantile(alpha/2,2*n2);
+      double h2 = (n2==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n2+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n2+1)) );
+
+      veyl0[i] = (n0-l0)/(fLumi*dm*fit0);
+      veyh0[i] = (h0-n0)/(fLumi*dm*fit0);
+      veyl1[i] = (n1-l1)/(fLumi*dm*fit1);
+      veyh1[i] = (h1-n1)/(fLumi*dm*fit1);
+      veyl2[i] = (n2-l2)/(fLumi*dm*fit2);
+      veyh2[i] = (h2-n2)/(fLumi*dm*fit2);
+  }
+
+  // data in the graph format
+  TGraphAsymmErrors *g_data0 = new TGraphAsymmErrors(bins_to_process,vx,vy0,vexl,vexh,veyl0,veyh0);
+  TGraphAsymmErrors *g_data1 = new TGraphAsymmErrors(bins_to_process,vx,vy1,vexl,vexh,veyl1,veyh1);
+  TGraphAsymmErrors *g_data2 = new TGraphAsymmErrors(bins_to_process,vx,vy2,vexl,vexh,veyl2,veyh2);
+
   TCanvas *c_0Tag = new TCanvas("c_0Tag", "", 800, 800);
   TCanvas *c_1Tag = new TCanvas("c_1Tag", "", 800, 800);
   TCanvas *c_2Tag = new TCanvas("c_2Tag", "", 800, 800);
@@ -118,6 +177,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   legend->SetFillStyle(0);
   legend->SetTextFont(42);
   legend->SetTextSize(0.03);
+  legend->AddEntry(g_data0, "Data","lp");
 
   for(int i=0; i<31; i+=5)
   {
@@ -169,7 +229,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
       g_SB_B_ratio_0Tag->GetXaxis()->SetTitle("Dijet Mass [GeV]");
       g_SB_B_ratio_0Tag->GetYaxis()->SetTitle("B Fit (S+B)/B Fit (B-only)");
       g_SB_B_ratio_0Tag->GetXaxis()->SetNdivisions(1005);
-      g_SB_B_ratio_0Tag->GetYaxis()->SetRangeUser(0.9,1.05);
+      g_SB_B_ratio_0Tag->GetYaxis()->SetRangeUser(0.85,1.15);
       g_SB_B_ratio_0Tag->GetYaxis()->SetTitleOffset(1.2);
       g_SB_B_ratio_0Tag->Draw("AL");
     }
@@ -193,7 +253,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
       g_SB_B_ratio_1Tag->GetXaxis()->SetTitle("Dijet Mass [GeV]");
       g_SB_B_ratio_1Tag->GetYaxis()->SetTitle("B Fit (S+B)/B Fit (B-only)");
       g_SB_B_ratio_1Tag->GetXaxis()->SetNdivisions(1005);
-      g_SB_B_ratio_1Tag->GetYaxis()->SetRangeUser(0.9,1.05);
+      g_SB_B_ratio_1Tag->GetYaxis()->SetRangeUser(0.85,1.15);
       g_SB_B_ratio_1Tag->GetYaxis()->SetTitleOffset(1.2);
       g_SB_B_ratio_1Tag->Draw("AL");
     }
@@ -209,7 +269,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
       g_SB_B_ratio_2Tag->GetXaxis()->SetTitle("Dijet Mass [GeV]");
       g_SB_B_ratio_2Tag->GetYaxis()->SetTitle("B Fit (S+B)/B Fit (B-only)");
       g_SB_B_ratio_2Tag->GetXaxis()->SetNdivisions(1005);
-      g_SB_B_ratio_2Tag->GetYaxis()->SetRangeUser(0.9,1.05);
+      g_SB_B_ratio_2Tag->GetYaxis()->SetRangeUser(0.85,1.15);
       g_SB_B_ratio_2Tag->GetYaxis()->SetTitleOffset(1.2);
       g_SB_B_ratio_2Tag->Draw("AL");
     }
@@ -233,6 +293,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   c_0Tag->cd();
   legend->Draw();
   line->Draw("same");
+  g_data0->Draw("Psame");
   l1.SetTextSize(0.04);
   l1.DrawLatex(0.2,0.88, "qq/bb, f_{b#bar{b}}=0.5");
   l1.SetTextSize(0.035);
@@ -246,6 +307,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   c_1Tag->cd();
   legend->Draw();
   line->Draw("same");
+  g_data1->Draw("Psame");
   l1.SetTextSize(0.04);
   l1.DrawLatex(0.2,0.88, "qq/bb, f_{b#bar{b}}=0.5");
   l1.SetTextSize(0.035);
@@ -259,6 +321,7 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
   c_2Tag->cd();
   legend->Draw();
   line->Draw("same");
+  g_data2->Draw("Psame");
   l1.SetTextSize(0.04);
   l1.DrawLatex(0.2,0.88, "qq/bb, f_{b#bar{b}}=0.5");
   l1.SetTextSize(0.035);
@@ -273,7 +336,15 @@ void drawFits(const Double_t fLumi, const Int_t fNpoints, const Double_t fFitXmi
 
 void makePlots()
 {
+  Double_t xbins[] = {890, 944, 1000, 1058, 1118, 1181, 1246, 1313, 1383, 1455, 1530, 1607, 1687, 1770, 1856,
+                      1945, 2037, 2132, 2231, 2332, 2438, 2546, 2659, 2775, 2895, 3019, 3147, 3279, 3416, 3558,
+                      3704, 3854, 4010, 4171, 4337, 4509, 4686, 4869, 5058, 5253, 5455, 5663, 5877, 6000};
 
-  drawFits(4976, 100, 890, 4200);
-
+  drawFits("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
+           "DATA__cutHisto_allPreviousCuts________DijetMass",
+           "CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
+           "DATA__cutHisto_allPreviousCuts________DijetMass",
+           "CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
+           "DATA__cutHisto_allPreviousCuts________DijetMass",
+            43, xbins, 4976, 100, 890, 4200);
 }
