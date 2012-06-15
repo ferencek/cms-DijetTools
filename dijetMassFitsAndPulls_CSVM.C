@@ -182,7 +182,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   p_1->SetRightMargin(0.03);
   p_1->SetTopMargin(0.03);
 
-  TH1F *vFrame = p_1->DrawFrame(700.0,4.0e-08,4337.0,10.0);
+  TH1F *vFrame = p_1->DrawFrame(700.0,2e-10,4337.0,1e+02);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
   vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
@@ -190,7 +190,7 @@ void performFit(const string& fInputFile, const string& fPlot,
 
   g->Draw("P");
  
-  TLegend *legend = new TLegend(.4,.7,.6,.85);
+  TLegend *legend = new TLegend(.75,.45,0.95,.6);
   legend->SetBorderSize(0);
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
@@ -387,42 +387,42 @@ void performFit(const string& fInputFile, const string& fPlot,
   l1.SetTextFont(42);
   l1.SetNDC();
   l1.SetTextSize(0.04);
-  l1.DrawLatex(0.70,0.57, "CMS Preliminary");
-  l1.DrawLatex(0.70,0.49, "#intLdt = 5 fb^{-1}");
-  l1.DrawLatex(0.71,0.44, "#sqrt{s} = 7 TeV");
-  l1.DrawLatex(0.70,0.39, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  l1.DrawLatex(0.70,0.34, "Wide Jets");
+  l1.DrawLatex(0.37,0.90, "CMS Preliminary");
+  l1.DrawLatex(0.37,0.82, "#intLdt = 5 fb^{-1}");
+  l1.DrawLatex(0.38,0.77, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.37,0.72, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.37,0.67, "Wide Jets");
   l1.SetTextColor(kGreen+2);
   if( fLabel.find("0 b-tags")!=string::npos )
   {
-    l1.DrawLatex(0.20,0.45, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.30, "G (2 TeV)");
+    l1.DrawLatex(0.20,0.53, "G (1.4 TeV)");
+    l1.DrawLatex(0.35,0.42, "G (2 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
-    l1.DrawLatex(0.20,0.40, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.26, "G (2 TeV)");
+    l1.DrawLatex(0.19,0.46, "G (1.4 TeV)");
+    l1.DrawLatex(0.35,0.35, "G (2 TeV)");
   }
   else
   {
-    l1.DrawLatex(0.20,0.32, "G (1.4 TeV)");
-    l1.DrawLatex(0.35,0.16, "G (2 TeV)");
+    l1.DrawLatex(0.17,0.39, "G (1.4 TeV)");
+    l1.DrawLatex(0.33,0.26, "G (2 TeV)");
   }
   l1.SetTextColor(kRed);
   if( fLabel.find("0 b-tags")!=string::npos )
   {
-    l1.DrawLatex(0.35,0.42, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.29, "Z' (2.4 TeV)");
+    l1.DrawLatex(0.35,0.51, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.48,0.41, "Z' (2.3 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
-    l1.DrawLatex(0.35,0.38, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.25, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.35,0.44, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.49,0.35, "Z' (2.3 TeV)");
   }
   else
   {
-    l1.DrawLatex(0.35,0.30, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.16, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.31,0.36, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.45,0.26, "Z' (2.3 TeV)");
   }
   l1.SetTextColor(kBlack);
   l1.SetTextSize(0.06);

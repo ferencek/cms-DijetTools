@@ -412,17 +412,17 @@ void performFit(const string& fInputFile, const string& fPlot,
   if( fLabel.find("0 b-tags")!=string::npos )
   {
     l1.DrawLatex(0.35,0.42, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.29, "Z' (2.4 TeV)");
+    l1.DrawLatex(0.50,0.29, "Z' (2.3 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
     l1.DrawLatex(0.35,0.38, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.25, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.25, "Z' (2.3 TeV)");
   }
   else
   {
     l1.DrawLatex(0.35,0.30, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.16, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.16, "Z' (2.3 TeV)");
   }
   l1.SetTextColor(kBlack);
   l1.SetTextSize(0.06);
@@ -471,7 +471,7 @@ void makePlots()
   Double_t xbins[] = {890, 944, 1000, 1058, 1118, 1181, 1246, 1313, 1383, 1455, 1530, 1607, 1687, 1770, 1856,
                       1945, 2037, 2132, 2231, 2332, 2438, 2546, 2659, 2775, 2895, 3019, 3147, 3279, 3416, 3558,
                       3704, 3854, 4010, 4171, 4337, 4509, 4686, 4869, 5058, 5253, 5455, 5663, 5877, 6000};
-                      
+
   performFit("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
              "DATA__cutHisto_allPreviousCuts________DijetMass",
              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",

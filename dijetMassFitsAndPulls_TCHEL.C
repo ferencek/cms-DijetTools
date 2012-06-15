@@ -412,17 +412,17 @@ void performFit(const string& fInputFile, const string& fPlot,
   if( fLabel.find("0 b-tags")!=string::npos )
   {
     l1.DrawLatex(0.35,0.42, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.29, "Z' (2.4 TeV)");
+    l1.DrawLatex(0.50,0.29, "Z' (2.3 TeV)");
   }
   else if( fLabel.find("1 b-tag")!=string::npos )
   {
     l1.DrawLatex(0.35,0.38, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.25, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.25, "Z' (2.3 TeV)");
   }
   else
   {
     l1.DrawLatex(0.35,0.30, "Z' (1.7 TeV)");
-    l1.DrawLatex(0.50,0.16, "Z' (1.7 TeV)");
+    l1.DrawLatex(0.50,0.16, "Z' (2.3 TeV)");
   }
   l1.SetTextColor(kBlack);
   l1.SetTextSize(0.06);
