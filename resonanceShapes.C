@@ -350,46 +350,14 @@ void makePlots()
   // ##########################################
   // ## With variable dijet mass binning
   // ##########################################
-  
+
   Double_t xbins[] = {0, 1, 3, 6, 10, 16, 23, 31, 40, 50, 61, 74, 88, 103, 119, 137, 156, 176, 197, 220, 244, 270, 296, 325, 354, 386, 419, 453, 489, 526, 565, 606, 649, 693,740, 788,
                       838, 890, 944, 1000, 1058, 1118, 1181, 1246, 1313, 1383, 1455, 1530, 1607, 1687, 1770, 1856, 1945, 2037, 2132, 2231, 2332, 2438, 2546, 2659, 2775, 2895, 3019, 3147,
                       3279, 3416, 3558, 3704, 3854, 4010, 4171, 4337, 4509, 4686, 4869, 5058, 5253, 5455, 5663, 5877, 6000};
 
-//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
-//                    "M=500 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 1530,
-//                    "ResonanceShape_RSG_M-500.eps");
-// 
-//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-700_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-700_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
-//                    "M=700 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 1856,
-//                    "ResonanceShape_RSG_M-700.eps");
-// 
-//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
-//                    "M=1200 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 2775,
-//                    "ResonanceShape_RSG_M-1200.eps");
-// 
-//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
-//                    "M=2000 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 4509,
-//                    "ResonanceShape_RSG_M-2000.eps");
-// 
-//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiency_CSVL_PUSFReweighted/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_qqbar",
-//                    "myAnalyzer/cutHisto_allPreviousCuts________DijetMass_bbbar", 80, xbins,
-//                    "M=3500 GeV", "RSG#rightarrowq#bar{q}", "RSG#rightarrowb#bar{b}", "Dijet Mass [GeV]", "", 0, 5663,
-//                    "ResonanceShape_RSG_M-3500.eps");
-                                            
+  // ###########
+  // ## CSVL
+  // ###########
   // M-1200
   // RSG->bbbar
   // CSVL 0Tag
@@ -413,7 +381,7 @@ void makePlots()
                    "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
                    "M=1.2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
                    "ResonanceShape_RSGToBBbar_M-1200_CSVL_2Tag.eps", 0, 0.24);
-    // RSG->qqbar
+  // RSG->qqbar
   // CSVL 0Tag
   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
@@ -457,7 +425,7 @@ void makePlots()
                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
                    "M=1.2 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
                    "ResonanceShape_RSGToGG_M-1200_CSVL_2Tag.eps", 0, 0.25);
-                      
+
   // M-2000
   // RSG->bbbar
   // CSVL 0Tag
@@ -593,8 +561,282 @@ void makePlots()
                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
                    "M=3.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
                    "ResonanceShape_RSGToGG_M-3500_CSVL_2Tag.eps", 0, 0.25);
-  
-                      
+
+//   // ###########
+//   // ## CSVM
+//   // ###########
+//   // M-500
+//   // RSG->bbbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_0tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-500_CSVM_0Tag.eps", 0, 0.24);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_1tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-500_CSVM_1Tag.eps", 0, 0.24);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-500_CSVM_2Tag.eps", 0, 0.24);
+//   // RSG->qqbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_0tag", 80, xbins,
+//                    "M=0.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-500_CSVM_0Tag.eps", 0, 0.35);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_1tag", 80, xbins,
+//                    "M=0.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-500_CSVM_1Tag.eps", 0, 0.35);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_2tag", 80, xbins,
+//                    "M=0.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-500_CSVM_2Tag.eps", 0, 0.35);
+//   // RSG->gg
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_0tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-500_CSVM_0Tag.eps", 0, 0.25);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_1tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-500_CSVM_1Tag.eps", 0, 0.25);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
+//                    "M=0.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-500_CSVM_2Tag.eps", 0, 0.25);
+
+//   // M-1200
+//   // RSG->bbbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_0tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-1200_CSVM_0Tag.eps", 0, 0.24);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_1tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-1200_CSVM_1Tag.eps", 0, 0.24);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToBBbar_M-1200_CSVM_2Tag.eps", 0, 0.24);
+//     // RSG->qqbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_0tag", 80, xbins,
+//                    "M=1.2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-1200_CSVM_0Tag.eps", 0, 0.50);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_1tag", 80, xbins,
+//                    "M=1.2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-1200_CSVM_1Tag.eps", 0, 0.50);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_2tag", 80, xbins,
+//                    "M=1.2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToQQbar_M-1200_CSVM_2Tag.eps", 0, 0.50);
+//   // RSG->gg
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_0tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowgg", "G#rightarrowgg, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-1200_CSVM_0Tag.eps", 0, 0.25);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_1tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowgg", "G#rightarrowgg, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-1200_CSVM_1Tag.eps", 0, 0.25);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-1200_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
+//                    "M=1.2 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 2775,
+//                    "ResonanceShape_RSGToGG_M-1200_CSVM_2Tag.eps", 0, 0.25);
+// 
+//   // M-2000
+//   // RSG->bbbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_0tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-2000_CSVM_0Tag.eps", 0, 0.22);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_1tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-2000_CSVM_1Tag.eps", 0, 0.22);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-2000_CSVM_2Tag.eps", 0, 0.22);
+//   // RSG->qqbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_0tag", 80, xbins,
+//                    "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-2000_CSVM_0Tag.eps", 0, 0.40);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_1tag", 80, xbins,
+//                    "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-2000_CSVM_1Tag.eps", 0, 0.40);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_2tag", 80, xbins,
+//                    "M=2 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-2000_CSVM_2Tag.eps", 0, 0.40);
+//   // RSG->gg
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_0tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-2000_CSVM_0Tag.eps", 0, 0.25);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_1tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-2000_CSVM_1Tag.eps", 0, 0.25);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-2000_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
+//                    "M=2 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-2000_CSVM_2Tag.eps", 0, 0.25);
+// 
+//   // M-3500
+//   // RSG->bbbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_0tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-3500_CSVM_0Tag.eps", 0, 0.25);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_1tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-3500_CSVM_1Tag.eps", 0, 0.25);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_bbbar",
+//                    "myAnalyzer/h1_DijetMass_bbbar_2tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowb#bar{b}", "G#rightarrowb#bar{b}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToBBbar_M-3500_CSVM_2Tag.eps", 0, 0.25);
+//   // RSG->qqbar
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_0tag", 80, xbins,
+//                    "M=3.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-3500_CSVM_0Tag.eps", 0, 0.40);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_1tag", 80, xbins,
+//                    "M=3.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-3500_CSVM_1Tag.eps", 0, 0.40);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight",
+//                    "myAnalyzer/h1_DijetMass_qqbarlight_2tag", 80, xbins,
+//                    "M=3.5 TeV (q=u,d,s)", "G#rightarrowq#bar{q}", "G#rightarrowq#bar{q}, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToQQbar_M-3500_CSVM_2Tag.eps", 0, 0.40);
+//   // RSG->gg
+//   // CSVM 0Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_0tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 0 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-3500_CSVM_0Tag.eps", 0, 0.25);
+//   // CSVM 1Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_1tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 1 b-tag", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-3500_CSVM_1Tag.eps", 0, 0.25);
+//   // CSVM 2Tag
+//   ResonanceShape_v("CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_ggInitialState_WideJets/RSGravitonToJJ_M-3500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root",
+//                    "myAnalyzer/h1_DijetMass_gg",
+//                    "myAnalyzer/h1_DijetMass_gg_2tag", 80, xbins,
+//                    "M=3.5 TeV", "G#rightarrowgg", "G#rightarrowgg, 2 b-tags", "Dijet Mass [GeV]", "Probability", 0, 6000,
+//                    "ResonanceShape_RSGToGG_M-3500_CSVM_2Tag.eps", 0, 0.25);
+
 //   // ## Impact of different initial states on resonance shapes
 //   // M-2000
 //   // RSG->gg
@@ -604,37 +846,37 @@ void makePlots()
 //                    "myAnalyzer/h1_DijetMass_gg", 80, xbins,
 //                    "M=2 TeV", "G#rightarrowgg", "gg#rightarrowG#rightarrowgg", "Dijet Mass [GeV]", "Probability", 0, 6000,
 //                    "ResonanceShape_RSGToGG_M-2000_ggInitialState.eps", 0, 0.35);
-  
-  
-  // ## Resonance shapes for different final states
-  ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
-                              "h_qq_1000", "h_bb_1000", "h_gg_1000", "M=1 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
-                              "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-1000.eps", 1, 1, 2600);
 
-  ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
-                              "h_qq_2000", "h_bb_2000", "h_gg_2000", "M=2 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
-                              "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-2000.eps", 1, 1, 4500);
 
-  ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
-                              "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
-                              "h_qq_3000", "h_bb_3000", "h_gg_3000", "M=3 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
-                              "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-3000.eps", 0, 1, 6000);
+//   // ## Resonance shapes for different final states
+//   ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_1000", "h_bb_1000", "h_gg_1000", "M=1 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-1000.eps", 1, 1, 2600);
+// 
+//   ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_2000", "h_bb_2000", "h_gg_2000", "M=2 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-2000.eps", 1, 1, 4500);
+// 
+//   ResonanceShapes_finalStates("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+//                               "LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+//                               "h_qq_3000", "h_bb_3000", "h_gg_3000", "M=3 TeV", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "G#rightarrowb#bar{b}", "G#rightarrowgg",
+//                               "Dijet Mass [GeV]", "Probability", "ResonanceShapes_RSG_M-3000.eps", 0, 1, 6000);
 
-  
-  // ## Resonance shapes for different masses
-  ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
-                         "h_qq_", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "Dijet Mass [GeV]", "",
-                         "ResonanceShapes_RSGToQQbar.eps", 1, 6000, 0, 0.33);
-  ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
-                         "h_bb_", "G#rightarrowb#bar{b}", "Dijet Mass [GeV]", "Probability",
-                         "ResonanceShapes_RSGToBBbar.eps", 1, 6000, 0, 0.25);
-  ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
-                         "h_gg_", "G#rightarrowgg", "Dijet Mass [GeV]", "",
-                         "ResonanceShapes_RSGToGG.eps", 1, 6000, 0, 0.2);
+
+//   // ## Resonance shapes for different masses
+//   ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_qq.root",
+//                          "h_qq_", "G#rightarrowq#bar{q}  (q=u,d,s,c)", "Dijet Mass [GeV]", "",
+//                          "ResonanceShapes_RSGToQQbar.eps", 1, 6000, 0, 0.33);
+//   ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_bb.root",
+//                          "h_bb_", "G#rightarrowb#bar{b}", "Dijet Mass [GeV]", "Probability",
+//                          "ResonanceShapes_RSGToBBbar.eps", 1, 6000, 0, 0.25);
+//   ResonanceShapes_masses("LimitCode/Data_and_ResonanceShapes/Resonance_Shapes_WideJets_gg.root",
+//                          "h_gg_", "G#rightarrowgg", "Dijet Mass [GeV]", "",
+//                          "ResonanceShapes_RSGToGG.eps", 1, 6000, 0, 0.2);
 
 }
