@@ -50,7 +50,7 @@ void ResonanceShape(const string& fInputFile, const string& fPlot, const Int_t f
 void ResonanceShape_v(const string& fInputFile1, const string& fInputFile2, const string& fPlot1, const string& fPlot2, const Int_t fNbins, const Double_t *fXbins,
                       const string& fTitle, const string& fLegend1, const string& fLegend2, const string& fXAxisTitle, const string& fYAxisTitle,
                       const Double_t fXmin, const Double_t fXmax,
-                      const string& fOutputFile, const Double_t fYmin = 0., const Double_t fYmax = 0., const string& fPlot3 = "", const string& fPlot4 = "")
+                      const string& fOutputFile, const Double_t fYmin = 0., const Double_t fYmax = 0.)
 {
   gROOT->SetBatch(kTRUE);
   setTDRStyle();
@@ -69,11 +69,6 @@ void ResonanceShape_v(const string& fInputFile1, const string& fInputFile2, cons
   TH1D *h1_plot1 = (TH1D*)h1_plot1_->Rebin(fNbins,"h1_DijetMass1",fXbins);
 
   TH1D *h1_plot2_ = (TH1D*)file2->Get(fPlot2.c_str());
-  if(fPlot3!="" && fPlot4!="")
-  {
-    h1_plot2_->Add((TH1D*)file2->Get(fPlot3.c_str()));
-    h1_plot2_->Add((TH1D*)file2->Get(fPlot4.c_str()));
-  }
   h1_plot2_->Scale(1./h1_plot2_->Integral());
   TH1D *h1_plot2 = (TH1D*)h1_plot2_->Rebin(fNbins,"h1_DijetMass2",fXbins);
   
