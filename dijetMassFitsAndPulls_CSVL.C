@@ -68,8 +68,8 @@ void performFit(const string& fInputFile, const string& fPlot,
   gStyle->SetStatW(0.2);
   gStyle->SetStatX(0.97);
   gStyle->SetStatY(0.97);
-//   gStyle->SetStatH(0);  // uncomment for PAS
-//   gStyle->SetStatW(0);  // uncomment for PAS
+  gStyle->SetStatH(0);  // uncomment for PAS
+  gStyle->SetStatW(0);  // uncomment for PAS
   gStyle->SetPadTopMargin(0.05);
   gStyle->SetPadBottomMargin(0.13);
   gStyle->SetPadLeftMargin(0.16);
@@ -185,7 +185,8 @@ void performFit(const string& fInputFile, const string& fPlot,
   TH1F *vFrame = p_1->DrawFrame(700.0,4.0e-08,4337.0,10.0);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
-  vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
+//   vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
+  vFrame->GetYaxis()->SetTitle("(1/L)(dN/dm) [pb/GeV]");
   vFrame->GetYaxis()->SetTitleOffset(1.05);
 
   g->Draw("P");
@@ -433,7 +434,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   // Begin bottom part
   c->cd(2);
   TPad *p_2 = (TPad*)c->GetPad(2);
-  p_2->SetPad(0.,0.,1.,0.25);
+  p_2->SetPad(0.,0.,1.,0.2535);
   p_2->SetBottomMargin(0.35);
   p_2->SetLeftMargin(0.13);
   p_2->SetRightMargin(0.03);
@@ -450,13 +451,24 @@ void performFit(const string& fInputFile, const string& fPlot,
   vFrame2->GetXaxis()->SetTitleSize(0.175);
   vFrame2->GetXaxis()->SetLabelSize(0.155);
 
+  h1_pulls->SetLineWidth(0);
+  h1_pulls->SetLineColor(kRed);
   h1_pulls->SetFillColor(kRed);
 
   h1_pulls->Draw("samehist");
 
+  double line_y1 = h1_pulls->GetBinContent(1);
+  if( line_y1>0. ) line_y1 = 0.;
+  TLine *line2 = new TLine(890.,line_y1,890.,-3.3);
+  line2->SetLineColor(0);
+  line2->SetLineWidth(2);
+  line2->Draw("");
+
   TLine *line = new TLine(700.,0,4337,0);
   line->Draw("");
-  
+
+  gPad->RedrawAxis();
+
   c->SaveAs(fOutputFile.c_str());
 
   // End bottom part
