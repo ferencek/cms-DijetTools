@@ -185,8 +185,8 @@ void performFit(const string& fInputFile, const string& fPlot,
   TH1F *vFrame = p_1->DrawFrame(700.0,2e-10,4337.0,1e+02);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
-//   vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
-  vFrame->GetYaxis()->SetTitle("(1/L)(dN/dm) [pb/GeV]");
+  //vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
+  vFrame->GetYaxis()->SetTitle("(1/#scale[0.5]{#int}Ldt)(dN/dm) [pb/GeV]");
   vFrame->GetYaxis()->SetTitleOffset(1.05);
 
   g->Draw("P");
