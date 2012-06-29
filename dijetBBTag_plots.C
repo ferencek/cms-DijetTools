@@ -319,8 +319,9 @@ void overlay_DATA_MC_v(const string& fInputFile1, const string& fInputFile2, con
   h_DijetMass_DATA_rebin->Draw("same");
 
   gPad->RedrawAxis();
-  
-  TLegend *legend = new TLegend(.35,.74,.7,.89);
+
+  //TLegend *legend = new TLegend(.35,.74,.7,.89);
+  TLegend *legend = new TLegend(.35,.67,.7,.82); // for PAS
   legend->SetBorderSize(0);
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
@@ -342,7 +343,8 @@ void overlay_DATA_MC_v(const string& fInputFile1, const string& fInputFile2, con
   if(fInputFile1.find("WideJets")!=string::npos) l1.DrawLatex(0.19,0.19, "Wide Jets");
   else l1.DrawLatex(0.19,0.19, "Anti-k_{T} R = 0.7 PFJets");
   l1.SetTextSize(0.055);
-  l1.DrawLatex(0.74,0.19, fLabel.c_str());
+  //l1.DrawLatex(0.74,0.19, fLabel.c_str());
+  l1.DrawLatex(0.74,0.87, fLabel.c_str());
 
   c->SetLogy();
   c->SaveAs(fOutputFile.c_str());
