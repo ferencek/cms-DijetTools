@@ -114,7 +114,8 @@ void performFit(const string& fInputFile, const string& fPlot,
       vy[i]   = n / (dm*fLumi);
 
       double l = 0.5*TMath::ChisquareQuantile(alpha/2,2*n);
-      double h = (n==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n+1)) );
+      //double h = (n==0) ? ( 0.5*TMath::ChisquareQuantile(1-alpha,2*(n+1)) ) : ( 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n+1)) );
+      double h = 0.5*TMath::ChisquareQuantile(1-alpha/2,2*(n+1));
 
       veyl[i] = (n-l)/(fLumi*dm);
       veyh[i] = (h-n)/(fLumi*dm);
@@ -185,18 +186,18 @@ void performFit(const string& fInputFile, const string& fPlot,
   TH1F *vFrame = p_1->DrawFrame(700.0,4.0e-08,4337.0,10.0);
   vFrame->SetTitle("");
   vFrame->GetXaxis()->SetTitle("Dijet Mass [GeV]");
-  //vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
-  vFrame->GetYaxis()->SetTitle("(1/#scale[0.5]{#int}Ldt)(dN/dm) [pb/GeV]");
+  vFrame->GetYaxis()->SetTitle("d#sigma/dm [pb/GeV]");
+  //vFrame->GetYaxis()->SetTitle("(1/#scale[0.5]{#int}Ldt)(dN/dm) [pb/GeV]");
   vFrame->GetYaxis()->SetTitleOffset(1.05);
 
-  g->Draw("P");
+  g->Draw("PZ");
  
-  TLegend *legend = new TLegend(.4,.7,.6,.85);
+  TLegend *legend = new TLegend(.4,.75,.8,.85);
   legend->SetBorderSize(0);
   legend->SetFillColor(0);
   legend->SetFillStyle(0);
   legend->SetTextFont(42);
-  legend->SetTextSize(0.05);
+  legend->SetTextSize(0.04);
   legend->AddEntry(g, "Data","lp");
   legend->AddEntry(fit, "Fit","l");
   legend->Draw();
@@ -387,12 +388,13 @@ void performFit(const string& fInputFile, const string& fPlot,
   l1.SetTextAlign(12);
   l1.SetTextFont(42);
   l1.SetNDC();
+  l1.SetTextSize(0.06);
+  l1.DrawLatex(0.70,0.62, "CMS");
   l1.SetTextSize(0.04);
-  l1.DrawLatex(0.70,0.57, "CMS Preliminary");
-  l1.DrawLatex(0.70,0.49, "#intLdt = 5 fb^{-1}");
-  l1.DrawLatex(0.71,0.44, "#sqrt{s} = 7 TeV");
-  l1.DrawLatex(0.70,0.39, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  l1.DrawLatex(0.70,0.34, "Wide Jets");
+  l1.DrawLatex(0.70,0.55, "#scale[0.75]{#int}Ldt = 5 fb^{-1}");
+  l1.DrawLatex(0.71,0.50, "#sqrt{s} = 7 TeV");
+  l1.DrawLatex(0.70,0.45, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  l1.DrawLatex(0.70,0.40, "Wide Jets");
   l1.SetTextColor(kGreen+2);
   if( fLabel.find("0 b-tags")!=string::npos )
   {
@@ -427,7 +429,7 @@ void performFit(const string& fInputFile, const string& fPlot,
   }
   l1.SetTextColor(kBlack);
   l1.SetTextSize(0.06);
-  l1.DrawLatex(0.17,0.89, fLabel.c_str());
+  l1.DrawLatex(0.78,0.89, fLabel.c_str());
   
   // End top part
   
