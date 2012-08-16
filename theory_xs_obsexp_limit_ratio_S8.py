@@ -116,14 +116,14 @@ graph_signal_exp_ratio.SetLineColor(kBlue)
 graph_signal_exp_ratio.SetFillColor(kGreen+1)
 
 graph_signal_exp_1sigma_ratio = TGraph(len(m_exp_final),m_exp_final,signal_exp_1sigma_ratio)
-graph_signal_exp_1sigma_ratio.SetFillColor(kGreen+1)
+graph_signal_exp_1sigma_ratio.SetFillColor(5)
 
 graph_signal_exp_2sigma_ratio = TGraph(len(m_exp_final),m_exp_final,signal_exp_2sigma_ratio)
 graph_signal_exp_2sigma_ratio.GetXaxis().SetTitle("Resonance Mass [GeV]")
 graph_signal_exp_2sigma_ratio.GetYaxis().SetTitle("(Theory #sigma) / (95% CL Limit on #sigma)")
 graph_signal_exp_2sigma_ratio.GetYaxis().SetRangeUser(0,2.3)
 graph_signal_exp_2sigma_ratio.GetXaxis().SetNdivisions(505)
-graph_signal_exp_2sigma_ratio.SetFillColor(kYellow)
+graph_signal_exp_2sigma_ratio.SetFillColor(41)
 
 c = TCanvas("c", "",800,800)
 c.cd()
