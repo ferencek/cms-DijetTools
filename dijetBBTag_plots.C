@@ -328,23 +328,27 @@ void overlay_DATA_MC_v(const string& fInputFile1, const string& fInputFile2, con
   legend->SetTextFont(42);
   legend->SetTextSize(0.04);
   legend->AddEntry(h_DijetMass_DATA_rebin,"Data","lp");
-  legend->AddEntry(h_DijetMass_MC_rebin,"QCD PYTHIA6 MC (#times 1.16)","f");
+  legend->AddEntry(h_DijetMass_MC_rebin,"QCD Pythia","f");
+  //legend->AddEntry(h_DijetMass_MC_rebin,"QCD PYTHIA6 MC (#times 1.16)","f");
   legend->Draw();
   
   TLatex l1;
   l1.SetTextAlign(12);
-  l1.SetTextFont(42);
   l1.SetNDC();
+  l1.SetTextSize(0.06);
+  l1.SetTextFont(62);
+  l1.DrawLatex(0.15,0.96, "CMS");
+  l1.SetTextFont(42);
+  l1.DrawLatex(0.35,0.965, "L = 5 fb^{-1}");
+  l1.DrawLatex(0.69,0.96, "#sqrt{s} = 7 TeV");
   l1.SetTextSize(0.04);
-  l1.DrawLatex(0.19,0.42, "CMS Preliminary");
-  l1.DrawLatex(0.19,0.34, "#intLdt = 5 fb^{-1}");
-  l1.DrawLatex(0.20,0.29, "#sqrt{s} = 7 TeV");
-  l1.DrawLatex(0.19,0.24, "|#eta| < 2.5, |#Delta#eta| < 1.3");
-  if(fInputFile1.find("WideJets")!=string::npos) l1.DrawLatex(0.19,0.19, "Wide Jets");
-  else l1.DrawLatex(0.19,0.19, "Anti-k_{T} R = 0.7 PFJets");
+  l1.SetTextFont(42);
+  l1.DrawLatex(0.18,0.22, "|#eta| < 2.5, |#Delta#eta| < 1.3");
+  if(fInputFile1.find("WideJets")!=string::npos) l1.DrawLatex(0.18,0.18, "Wide Jets");
+  else l1.DrawLatex(0.18,0.18, "Anti-k_{T} R = 0.7 PFJets");
   l1.SetTextSize(0.055);
-  //l1.DrawLatex(0.74,0.19, fLabel.c_str());
-  l1.DrawLatex(0.74,0.87, fLabel.c_str());
+  l1.SetTextAlign(32);
+  l1.DrawLatex(0.91,0.87, fLabel.c_str());
 
   c->SetLogy();
   c->SaveAs(fOutputFile.c_str());
@@ -764,13 +768,13 @@ void makePlots()
                     "CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                     "DATA__cutHisto_allPreviousCuts________DijetMass",
                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_CSVL_0Tag_PUSFkFReweighted_WideJets_Full2011.eps", "0 b-tags", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
+                    "DijetMass_CSVL_0Tag_PUSFkFReweighted_WideJets_Full2011.eps", "0 b tags", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
 
   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass",
                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_CSVL_0Tag_PUSFkFReweighted_WideJets_Full2011.eps", "0 b-tags", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.03451, 0.984602);
+                  "DijetMass_ratio_CSVL_0Tag_PUSFkFReweighted_WideJets_Full2011.eps", "0 b tags", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.03451, 0.984602);
 //   // SFb Up
 //   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_0Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //                   "CRAB_Jobs_MainAnalysis_CSVL_PUSFkFReweighted_PartonMatching_WideJets_QCD_SFbUp/Final__histograms.root",
@@ -801,13 +805,13 @@ void makePlots()
                     "CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                     "DATA__cutHisto_allPreviousCuts________DijetMass",
                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_CSVL_1Tag_PUSFkFReweighted_WideJets_Full2011.eps", "1 b-tag", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
+                    "DijetMass_CSVL_1Tag_PUSFkFReweighted_WideJets_Full2011.eps", "1 b tag", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
 
   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass",
                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_CSVL_1Tag_PUSFkFReweighted_WideJets_Full2011.eps", "1 b-tag", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.05427, 0.947269);
+                  "DijetMass_ratio_CSVL_1Tag_PUSFkFReweighted_WideJets_Full2011.eps", "1 b tag", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.05427, 0.947269);
 //   // SFb Up
 //   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_1Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //                   "CRAB_Jobs_MainAnalysis_CSVL_PUSFkFReweighted_PartonMatching_WideJets_QCD_SFbUp/Final__histograms.root",
@@ -838,13 +842,13 @@ void makePlots()
                     "CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                     "DATA__cutHisto_allPreviousCuts________DijetMass",
                     "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                    "DijetMass_CSVL_2Tag_PUSFkFReweighted_WideJets_Full2011.eps", "2 b-tags", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
+                    "DijetMass_CSVL_2Tag_PUSFkFReweighted_WideJets_Full2011.eps", "2 b tags", 43, xbins, "Dijet Mass [GeV]", "Events", 890, 6000, 0.01, 5e5);
 
   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
                   "DATA__cutHisto_allPreviousCuts________DijetMass",
                   "QCD_Pythia6__cutHisto_allPreviousCuts________DijetMass",
-                  "DijetMass_ratio_CSVL_2Tag_PUSFkFReweighted_WideJets_Full2011.eps", "2 b-tags", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.13408, 0.875629);
+                  "DijetMass_ratio_CSVL_2Tag_PUSFkFReweighted_WideJets_Full2011.eps", "2 b tags", 43, xbins, "Dijet Mass [GeV]", "Data/MC", 890, 6000, 1.13408, 0.875629);
 //   // SFb Up
 //   data_MC_ratio_v("CRAB_Jobs_MainAnalysis_CSVL_2Tag_PUSFkFReweighted_PartonMatching_WideJets/Final__histograms.root",
 //                   "CRAB_Jobs_MainAnalysis_CSVL_PUSFkFReweighted_PartonMatching_WideJets_QCD_SFbUp/Final__histograms.root",

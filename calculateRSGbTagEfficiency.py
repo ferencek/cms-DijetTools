@@ -129,15 +129,15 @@ def eff(inputDir, final_state, title, outputFilename):
   legend.SetFillStyle(0)
   legend.SetTextFont(42)
   legend.SetTextSize(0.04)
-  legend.AddEntry(graph_eff0,"0 b-tags","lp")
-  legend.AddEntry(graph_eff1,"1 b-tag","lp")
-  legend.AddEntry(graph_eff2,"2 b-tags","lp")
+  legend.AddEntry(graph_eff0,"0 b tags","lp")
+  legend.AddEntry(graph_eff1,"1 b tag","lp")
+  legend.AddEntry(graph_eff2,"2 b tags","lp")
   legend.Draw()
 
   c.SaveAs(outputFilename)
 
 
-def eff_syst(inputDirs, final_state, title, outputFilename, pos1 = 0.80, pos2 = 0.87, pos3 = 0.87):
+def eff_syst(inputDirs, final_state, title, outputFilename, pos1 = 0.80, pos2 = 0.87, pos3 = 0.88):
 
   files = [
     'RSGravitonToJJ_M-500_TuneZ2_7TeV_pythia6__ferencek-Summer11-PU_S4_START42_V11-v1_EDMTuple_V00-00-04__histograms.root',
@@ -279,7 +279,7 @@ def eff_syst(inputDirs, final_state, title, outputFilename, pos1 = 0.80, pos2 = 
   graph_eff0.SetFillStyle(3244)
   graph_eff0.SetTitle(title)
   graph_eff0.GetXaxis().SetTitle("Resonance Mass [GeV]")
-  graph_eff0.GetYaxis().SetTitle("Efficiency")
+  graph_eff0.GetYaxis().SetTitle("Tagging Rate")
   graph_eff0.GetYaxis().SetRangeUser(0.,1.)
   graph_eff0.GetXaxis().SetNdivisions(1005)
 
@@ -330,29 +330,32 @@ def eff_syst(inputDirs, final_state, title, outputFilename, pos1 = 0.80, pos2 = 
   graph_eff2_array.append( copy.deepcopy(graph_eff2) )
   graph_eff2_syst_array.append( copy.deepcopy(graph_eff2_syst) )
 
-  legend = TLegend(.63,pos3-0.15,.90,pos3)
+  legend = TLegend(.63,pos3-0.14,.90,pos3)
   legend.SetBorderSize(0)
   legend.SetFillColor(0)
   legend.SetFillStyle(0)
   legend.SetTextFont(42)
   legend.SetTextSize(0.04)
-  legend.AddEntry(graph_eff0,"0 b-tags","lfp")
-  legend.AddEntry(graph_eff1,"1 b-tag","lfp")
-  legend.AddEntry(graph_eff2,"2 b-tags","lfp")
+  legend.AddEntry(graph_eff0,"0 b tags","lfp")
+  legend.AddEntry(graph_eff1,"1 b tag","lfp")
+  legend.AddEntry(graph_eff2,"2 b tags","lfp")
   legend.Draw()
 
   l1 = TLatex()
   l1.SetTextAlign(12)
-  l1.SetTextFont(42)
   l1.SetNDC()
-  l1.SetTextSize(0.05)
+  l1.SetTextSize(0.06)
+  l1.SetTextFont(42)
   l1.DrawLatex(0.17,pos2, title)
+  l1.SetTextSize(0.06)
+  l1.SetTextFont(62)
+  l1.DrawLatex(0.13,0.96, "CMS Simulation")
+  l1.SetTextSize(0.06)
+  l1.SetTextFont(42)
+  l1.DrawLatex(0.66,0.96, "#sqrt{s} = 7 TeV")
   l1.SetTextSize(0.04)
-  l1.DrawLatex(0.17,pos1, "CMS Simulation")
-  l1.SetTextSize(0.03)
-  l1.DrawLatex(0.18,pos1-0.04, "#sqrt{s} = 7 TeV")
-  l1.DrawLatex(0.17,pos1-0.08, "|#eta| < 2.5, |#Delta#eta| < 1.3")
-  l1.DrawLatex(0.17,pos1-0.12, "Wide Jets")
+  l1.DrawLatex(0.17,pos1, "|#eta| < 2.5, |#Delta#eta| < 1.3")
+  l1.DrawLatex(0.17,pos1-0.04, "Wide Jets")
   
   c.SaveAs(outputFilename)  
 
@@ -360,10 +363,10 @@ def eff_syst(inputDirs, final_state, title, outputFilename, pos1 = 0.80, pos2 = 
 if __name__ == "__main__":
 
   # CSVL
-  eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, CSVL', 'RSGToBBbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
-  eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'ccbar', 'G#rightarrowc#bar{c}, CSVL', 'RSGToCCbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
-  eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s), CSVL', 'RSGToQQbarLight_bTagEfficiency_CSVL_PUSFReweighted.eps')
-  eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets', 'gg', 'G#rightarrowgg, CSVL', 'RSGToGG_bTagEfficiency_CSVL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, CSVL', 'RSGToBBbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'ccbar', 'G#rightarrowc#bar{c}, CSVL', 'RSGToCCbar_bTagEfficiency_CSVL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_WideJets', 'qqbarlight', 'G#rightarrowq#bar{q} (q=u,d,s), CSVL', 'RSGToQQbarLight_bTagEfficiency_CSVL_PUSFReweighted.eps')
+  #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVL_PUSFReweighted_ggInitialState_WideJets', 'gg', 'G#rightarrowgg, CSVL', 'RSGToGG_bTagEfficiency_CSVL_PUSFReweighted.eps')
 
   ## CSVM
   #eff('CRAB_Jobs_RSGraviton_ResonanceShapes_bTagEfficiencies_CSVM_PUSFReweighted_WideJets', 'bbbar', 'G#rightarrowb#bar{b}, CSVM', 'RSGToBBbar_bTagEfficiency_CSVM_PUSFReweighted.eps')
@@ -422,13 +425,15 @@ if __name__ == "__main__":
   graph_eff1_array[3].SetLineColor(kGreen+2)
   graph_eff1_array[3].SetFillColor(kGreen+2)
   graph_eff1_array[3].SetMarkerColor(kGreen+2)
+  graph_eff1_array[3].SetFillStyle(3245)
   graph_eff1_syst_array[3].SetFillColor(kGreen+2)
-  graph_eff1_syst_array[3].SetFillStyle(3005)
+  graph_eff1_syst_array[3].SetFillStyle(3245)
   graph_eff2_array[3].SetLineColor(kOrange+7)
   graph_eff2_array[3].SetFillColor(kOrange+7)
   graph_eff2_array[3].SetMarkerColor(kOrange+7)
+  graph_eff2_array[3].SetFillStyle(3254)
   graph_eff2_syst_array[3].SetFillColor(kOrange+7)
-  graph_eff2_syst_array[3].SetFillStyle(3004)
+  graph_eff2_syst_array[3].SetFillStyle(3254)
   
   graph_eff0_array[3].Draw("PL")
   graph_eff0_syst_array[3].Draw("F")
@@ -442,7 +447,7 @@ if __name__ == "__main__":
   legend1.SetFillColor(0)
   legend1.SetFillStyle(0)
   legend1.SetTextFont(42)
-  legend1.SetTextSize(0.03)
+  legend1.SetTextSize(0.04)
   legend1.SetHeader("G#rightarrowq#bar{q} (q=u,d,s)")
   legend1.AddEntry(graph_eff0_array[2],"0 b-tags","lfp")
   legend1.AddEntry(graph_eff1_array[2],"1 b-tag","lfp")
@@ -454,7 +459,7 @@ if __name__ == "__main__":
   legend2.SetFillColor(0)
   legend2.SetFillStyle(0)
   legend2.SetTextFont(42)
-  legend2.SetTextSize(0.03)
+  legend2.SetTextSize(0.04)
   legend2.SetHeader("G#rightarrowgg")
   legend2.AddEntry(graph_eff0_array[3],"0 b-tags","lfp")
   legend2.AddEntry(graph_eff1_array[3],"1 b-tag","lfp")
@@ -463,13 +468,16 @@ if __name__ == "__main__":
 
   l1 = TLatex()
   l1.SetTextAlign(12)
-  l1.SetTextFont(42)
   l1.SetNDC()
+  l1.SetTextSize(0.06)
+  l1.SetTextFont(62)
+  l1.DrawLatex(0.13,0.96, "CMS Simulation")
+  l1.SetTextSize(0.06)
+  l1.SetTextFont(42)
+  l1.DrawLatex(0.66,0.96, "#sqrt{s} = 7 TeV")
   l1.SetTextSize(0.04)
-  l1.DrawLatex(0.60,0.88, "CMS Simulation")
-  l1.DrawLatex(0.61,0.83, "#sqrt{s} = 7 TeV")
-  l1.DrawLatex(0.60,0.78, "|#eta| < 2.5, |#Delta#eta| < 1.3")
-  l1.DrawLatex(0.60,0.73, "Wide Jets")
+  l1.DrawLatex(0.60,0.86, "|#eta| < 2.5, |#Delta#eta| < 1.3")
+  l1.DrawLatex(0.60,0.82, "Wide Jets")
 
   c.SaveAs('RSGToGGandQQbarLight_bTagEfficiency_CSVL_PUSFReweighted_syst.eps')
 
