@@ -92,28 +92,28 @@ void makePlots()
 {
   // qq, M=1100 GeV
   posteriors("stats_1100_1_qq_bkg_1st_param_posterior_xs0.root", "stats_1100_1_qq_bkg_1st_param_posterior_xs0.4.root",
-             "qq, M=1100 GeV", "#sigma_{1}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_1st_param_posterior_qq_M-1100.eps");
+             "qq, M=1100 GeV", "n_{1}/#sigma_{1}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_1st_param_posterior_qq_M-1100.eps");
 
   posteriors("stats_1100_1_qq_bkg_2nd_param_posterior_xs0.root", "stats_1100_1_qq_bkg_2nd_param_posterior_xs0.4.root",
-             "qq, M=1100 GeV", "#sigma_{2}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_2nd_param_posterior_qq_M-1100.eps");
+             "qq, M=1100 GeV", "n_{2}/#sigma_{2}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_2nd_param_posterior_qq_M-1100.eps");
 
   posteriors("stats_1100_1_qq_bkg_3rd_param_posterior_xs0.root", "stats_1100_1_qq_bkg_3rd_param_posterior_xs0.4.root",
-             "qq, M=1100 GeV", "#sigma_{3}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_3rd_param_posterior_qq_M-1100.eps");
+             "qq, M=1100 GeV", "n_{3}/#sigma_{3}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_3rd_param_posterior_qq_M-1100.eps");
 
   posteriors("stats_1100_1_qq_bkg_4th_param_posterior_xs0.root", "stats_1100_1_qq_bkg_4th_param_posterior_xs0.4.root",
-             "qq, M=1100 GeV", "#sigma_{4}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_4th_param_posterior_qq_M-1100.eps");
+             "qq, M=1100 GeV", "n_{4}/#sigma_{4}", "Posterior", "xs=0 pb", "xs=0.4 pb", -20, 20, 0, 1.1, "bkg_4th_param_posterior_qq_M-1100.eps");
 
   // qq, M=3000 GeV
   posteriors("stats_3000_1_qq_bkg_1st_param_posterior_xs0.root", "stats_3000_1_qq_bkg_1st_param_posterior_xs0.004.root",
-             "qq, M=3000 GeV", "#sigma_{1}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_1st_param_posterior_qq_M-3000.eps");
+             "qq, M=3000 GeV", "n_{1}/#sigma_{1}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_1st_param_posterior_qq_M-3000.eps");
 
   posteriors("stats_3000_1_qq_bkg_2nd_param_posterior_xs0.root", "stats_3000_1_qq_bkg_2nd_param_posterior_xs0.004.root",
-             "qq, M=3000 GeV", "#sigma_{2}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_2nd_param_posterior_qq_M-3000.eps");
+             "qq, M=3000 GeV", "n_{2}/#sigma_{2}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_2nd_param_posterior_qq_M-3000.eps");
 
   posteriors("stats_3000_1_qq_bkg_3rd_param_posterior_xs0.root", "stats_3000_1_qq_bkg_3rd_param_posterior_xs0.004.root",
-             "qq, M=3000 GeV", "#sigma_{3}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_3rd_param_posterior_qq_M-3000.eps");
+             "qq, M=3000 GeV", "n_{3}/#sigma_{3}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_3rd_param_posterior_qq_M-3000.eps");
 
   posteriors("stats_3000_1_qq_bkg_4th_param_posterior_xs0.root", "stats_3000_1_qq_bkg_4th_param_posterior_xs0.004.root",
-             "qq, M=3000 GeV", "#sigma_{4}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_4th_param_posterior_qq_M-3000.eps");
+             "qq, M=3000 GeV", "n_{4}/#sigma_{4}", "Posterior", "xs=0 pb", "xs=0.004 pb", -20, 20, 0, 1.1, "bkg_4th_param_posterior_qq_M-3000.eps");
 
 }
